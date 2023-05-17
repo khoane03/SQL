@@ -127,31 +127,31 @@ insert into  GIOHANG values (N'GIÀY NAM', 1, 2000000,'ATM')
 insert into  GIOHANG values (N'PHÍM COR RGB', 1, 32000000,'ATM')
 
 SELECT *FROM THONGTIN_ND
-insert into  THONGTIN_ND values ('KHOA','2003-02-10',N'CỔ NHUẾ 2','khoatk4444@gmail.com', '0987527888','KH01')
+insert into  THONGTIN_ND values (N'KHOA','2003-02-10',N'CỔ NHUẾ 2','khoatk4444@gmail.com', '0987527888','KH01')
 insert into  THONGTIN_ND values (N'THỊNH','2003-10-10',N'LÊ VĂN HIẾN','thinhmom@gmail.com', '0387527888','KH02')
 insert into  THONGTIN_ND values (N'KHÁNH ','2003-09-05',N'VĂN HỘI','khanh@gmail.com', '0367527888','KH03')
 insert into  THONGTIN_ND values (N'LINH2','1999-02-10',N'CỔ NHUẾ 1','linh@gmail.com', '0587527888','KH04')
-insert into  THONGTIN_ND values ('HÙNG','2004-02-10',N'CỔ NHUẾ 2','hung@gmail.com', '0985627888','KH05')
-insert into  THONGTIN_ND values ('HUY','2007-02-10',N'HÀ ĐÔNG','huy2@gmail.com', '0337527888','KH06')
-insert into  THONGTIN_ND values ('LAN','2003-02-10',N'HOÀI ĐỨC','lanlun05@gmail.com', '0987435888','KH07')
-insert into  THONGTIN_ND values ('THAO','1990-02-10',N'PHÚ THỌ','thao@gmail.com', '0337427888','KH08')
-insert into  THONGTIN_ND values ('PHƯỢNG','2009-02-20',N'THÁI NGUYÊN','phuong002@gmail.com', '0957527888','KH09')
-insert into  THONGTIN_ND values ('MAI','2006-02-10',N'THANH HÓA','mai@gmail.com', '0989327888','KH10')
+insert into  THONGTIN_ND values (N'HÙNG','2004-02-10',N'CỔ NHUẾ 2','hung@gmail.com', '0985627888','KH05')
+insert into  THONGTIN_ND values (N'HUY','2007-02-10',N'HÀ ĐÔNG','huy2@gmail.com', '0337527888','KH06')
+insert into  THONGTIN_ND values (N'LAN','2003-02-10',N'HOÀI ĐỨC','lanlun05@gmail.com', '0987435888','KH07')
+insert into  THONGTIN_ND values (N'THAO','1990-02-10',N'PHÚ THỌ','thao@gmail.com', '0337427888','KH08')
+insert into  THONGTIN_ND values (N'PHƯỢNG','2009-02-20',N'THÁI NGUYÊN','phuong002@gmail.com', '0957527888','KH09')
+insert into  THONGTIN_ND values (N'MAI','2006-02-10',N'THANH HÓA','mai@gmail.com', '0989327888','KH10')
 insert into  THONGTIN_ND values (N'THÀNH','2003-02-10',N'ĐOÀN THỊ ĐIỂM','thanh00@gmail.com', '0777527888','KH11')
 insert into  THONGTIN_ND values (N'ĐỨC','2005-02-10',N'TRẦN DUY HƯNG','ducdao@gmail.com', '0987527888','KH12')
-insert into  THONGTIN_ND values ('LINH','2004-02-10',N'TÂY MỖ ','linh@gmail.com', '0987752788','KH13')
-insert into  THONGTIN_ND values ('HOA','1999-02-10','VIN HOME','hoa932@gmail.com', '0988327888','KH14')
-insert into  THONGTIN_ND values ('Elon Musk','1971-06-28','US','elon888@gmail.com', '0987438888','KH15')
-insert into  THONGTIN_ND values ('MINH','2003-05-10',N'HAI BÀ TRƯNG','minh@gmail.com', '0998527888','KH16')
+insert into  THONGTIN_ND values (N'LINH','2004-02-10',N'TÂY MỖ ','linh@gmail.com', '0987752788','KH13')
+insert into  THONGTIN_ND values (N'HOA','1999-02-10','VIN HOME','hoa932@gmail.com', '0988327888','KH14')
+insert into  THONGTIN_ND values (N'Elon Musk','1971-06-28','US','elon888@gmail.com', '0987438888','KH15')
+insert into  THONGTIN_ND values (N'MINH','2003-05-10',N'HAI BÀ TRƯNG','minh@gmail.com', '0998527888','KH16')
 insert into  THONGTIN_ND values (N'TUẤN','2003-02-10',N'THANH TRÌ','tuan221@gmail.com', '0388527888','KH17')
-insert into  THONGTIN_ND values ('ANH','2004-02-10',N'HÀ NỘI','anh32@gmail.com', '0987987888','KH18')
+insert into  THONGTIN_ND values (N'ANH','2004-02-10',N'HÀ NỘI','anh32@gmail.com', '0987987888','KH18')
 insert into  THONGTIN_ND values (N'HÒA','2007-02-10',N'THANH HÓA','hoaphat667@gmail.com', '0987597888','KH19')
 insert into  THONGTIN_ND values (N'PHÚC','2003-02-25',N'THÁI NGUYÊN','oguc92@gmail.com', '0987877888','KH20')
 insert into  THONGTIN_ND values (N'LY','2003-06-27',N'CỔ NHUẾ','lyle99@gmail.com', '0987527808','KH21')
-insert into  THONGTIN_ND values ('LAN2','2003-02-10',N'PHÚC THỌ','lancute@gmail.com', '0990527888','KH22')
+insert into  THONGTIN_ND values (N'LAN2','2003-02-10',N'PHÚC THỌ','lancute@gmail.com', '0990527888','KH22')
 insert into  THONGTIN_ND values (N'LÝ','2003-01-10',N'CỔ NHUẾ','ly272@gmail.com', '0987877888','KH23')
-insert into  THONGTIN_ND values ('CHUNG','1996-02-10',N'CỔ NHUẾ 2','chung219@gmail.com', '0980827888','KH24')
-insert into  THONGTIN_ND values ('Mark Zuckerberg','1971-06-28','US ','meta444@gmail.com', '0337527088','KH25')
+insert into  THONGTIN_ND values (N'CHUNG','1996-02-10',N'CỔ NHUẾ 2','chung219@gmail.com', '0980827888','KH24')
+insert into  THONGTIN_ND values (N'Mark Zuckerberg','1971-06-28','US ','meta444@gmail.com', '0337527088','KH25')
 
 SELECT *FROM CUAHANG
 insert into CUAHANG values ('Apple official', N'Điện thoại,Macbook', 1000, N'IPHONE 14 PRO' )
@@ -208,31 +208,31 @@ insert into VANCHUYEN values ('SHOPPE COD4', '2023-03-29')
 insert into VANCHUYEN values ('SHOPPE COD', '2023-02-19')
 
 SELECT *FROM DONHANG
-insert into DONHANG values ('DH1','2023-03-12',N'IPHONE 14 PRO','KHOA','SHOPPE')
+insert into DONHANG values ('DH1','2023-03-12',N'IPHONE 14 PRO',N'KHOA','SHOPPE')
 insert into DONHANG values ('DH2','2023-02-15',N'QUẠT',N'THỊNH','GHTK')
 insert into DONHANG values ('DH3','2023-04-11',N'ĐIỀU HOÀ',N'KHÁNH ','NOW')
 insert into DONHANG values ('DH4','2022-03-10',N'ÁO THUN',N'LINH','VIETTEL')
 insert into DONHANG values ('DH5','2021-03-12',N'MACBOOK',N'HÙNG','NINJA VAN')
-insert into DONHANG values ('DH6','2023-04-12',N'LAPTOP LENOVO','HUY','EXPRESS')
-insert into DONHANG values ('DH7','2023-03-15',N'BÀN HỌC','LAN','NINJA VAN')
-insert into DONHANG values ('DH8','2023-03-10',N'GHẾ GAMING ','THAO','SHOPPE 2')
+insert into DONHANG values ('DH6','2023-04-12',N'LAPTOP LENOVO',N'HUY','EXPRESS')
+insert into DONHANG values ('DH7','2023-03-15',N'BÀN HỌC',N'LAN','NINJA VAN')
+insert into DONHANG values ('DH8','2023-03-10',N'GHẾ GAMING ',N'THAO','SHOPPE 2')
 insert into DONHANG values ('DH9','2023-01-12',N'SÁCH CNTT',N'PHƯỢNG','SHOPPE 3')
-insert into DONHANG values ('DH10','2020-03-12',N'SÁCH LẬP TRÌNH C/C++','MAI','SHOPPE 4')
+insert into DONHANG values ('DH10','2020-03-12',N'SÁCH LẬP TRÌNH C/C++',N'MAI','SHOPPE 4')
 insert into DONHANG values ('DH11','2023-05-11',N'SÁCH LẬP TRÌNH',N'THÀNH','SHOPPE EXPRESS')
 insert into DONHANG values ('DH12','2023-03-14',N'ĐỒ ĂN NHANH',N'ĐỨC','GIAO HANG NHANH')
-insert into DONHANG values ('DH13','2023-05-12',N'PHỞ','LINH','SHOPPE 5')
-insert into DONHANG values ('DH14','2019-03-13',N'TRÀ CHANH','HOA','SHOPPE 6')
-insert into DONHANG values ('DH15','2023-03-10',N'TRÀ SỮA ','Elon Musk','SHOPPE 7')
-insert into DONHANG values ('DH16','2023-03-08',N'CƠM','MINH','SHOPPE 9')
+insert into DONHANG values ('DH13','2023-05-12',N'PHỞ',N'LINH','SHOPPE 5')
+insert into DONHANG values ('DH14','2019-03-13',N'TRÀ CHANH',N'HOA','SHOPPE 6')
+insert into DONHANG values ('DH15','2023-03-10',N'TRÀ SỮA ',N'Elon Musk','SHOPPE 7')
+insert into DONHANG values ('DH16','2023-03-08',N'CƠM',N'MINH','SHOPPE 9')
 insert into DONHANG values ('DH17','2023-03-03',N'BÚN BÒ',N'TUẤN','SHOPPE 8')
-insert into DONHANG values ('DH18','2022-09-12',N'BÀN PHÍM CƠ','ANH','SHOPPE HUb') 
-insert into DONHANG values ('DH19','2023-05-12',N'CHUỘT 2',N'HÒA','SHOPPE COD9')
+insert into DONHANG values ('DH18','2022-09-12',N'BÀN PHÍM CƠ',N'ANH','SHOPPE HUb') 
+insert into DONHANG values ('DH19','2023-05-12',N'CHUỘT 2',N'HÒA',N'SHOPPE COD9')
 insert into DONHANG values ('DH20','2020-03-10',N'GIÁ ĐỰNG SÁCH',N'PHÚC','SHOPPE VCN')
-insert into DONHANG values ('DH21','2023-03-20',N'BÀN LÀM VIỆC','LY','SHOPPE HT')
-insert into DONHANG values ('DH22','2023-03-23',N'TỦ ','LAN','SHOPPE COD1')
+insert into DONHANG values ('DH21','2023-03-20',N'BÀN LÀM VIỆC',N'LY','SHOPPE HT')
+insert into DONHANG values ('DH22','2023-03-23',N'TỦ ',N'LAN','SHOPPE COD1')
 insert into DONHANG values ('DH23','2024-03-17',N'DÉP',N'LÝ','SHOPPE COD2') 
-insert into DONHANG values ('DH24','2023-05-19',N'GIÀY NAM','CHUNG','SHOPPE COD3')
-insert into DONHANG values ('DH25','2023-04-16',N'PHÍM COR RGB','Mark Zuckerberg','SHOPPE COD4')
+insert into DONHANG values ('DH24','2023-05-19',N'GIÀY NAM',N'CHUNG','SHOPPE COD3')
+insert into DONHANG values ('DH25','2023-04-16',N'PHÍM COR RGB',N'Mark Zuckerberg','SHOPPE COD4')
 
 SELECT *FROM NOWSHIP
 insert into NOWSHIP values('N1',N'IPHONE 14 PRO','Apple official')
@@ -292,41 +292,45 @@ SELECT *FROM SUPPORT
 insert into SUPPORT values(1,'SP1','KH01','KHOA','Apple official','DH1') 
 insert into SUPPORT values(2,'SP2','KH02',N'THỊNH','Apple official2','DH2') 
 insert into SUPPORT values(3,'SP3','KH03',N'KHÁNH ','GiaDungOnline9','DH3') 
-insert into SUPPORT values(4,'SP4','KH04','LINH2','GiaDungOnline6','DH4') 
+insert into SUPPORT values(4,'SP4','KH04',N'LINH2','GiaDungOnline6','DH4') 
 insert into SUPPORT values(5,'SP5','KH05',N'HÙNG','ThoiTrangOfficial','DH5') 
-insert into SUPPORT values(6,'SP6','KH06','HUY','PCOnline','DH6') 
-insert into SUPPORT values(7,'SP7','KH07','LAN','GiaDungOnline','DH7') 
-insert into SUPPORT values(8,'SP8','KH08','THAO','GiaDungOnline7','DH8') 
+insert into SUPPORT values(6,'SP6','KH06',N'HUY','PCOnline','DH6') 
+insert into SUPPORT values(7,'SP7','KH07',N'LAN','GiaDungOnline','DH7') 
+insert into SUPPORT values(8,'SP8','KH08',N'THAO','GiaDungOnline7','DH8') 
 insert into SUPPORT values(9,'SP9','KH09',N'PHƯỢNG','BooksShop','DH9') 
-insert into SUPPORT values(10,'SP10','KH10','MAI','BooksShop2','DH10') 
-insert into SUPPORT values(11,'SP11','KH11','THÀNH','BooksShop3','DH11')
+insert into SUPPORT values(10,'SP10','KH10',N'MAI','BooksShop2','DH10') 
+insert into SUPPORT values(11,'SP11','KH11',N'THÀNH','BooksShop3','DH11')
 insert into SUPPORT values(12,'SP12','KH12',N'ĐỨC','Cicle K','DH12') 
-insert into SUPPORT values(13,'SP13','KH13','LINH','Bà TÁM4','DH13') 
-insert into SUPPORT values(14,'SP14','KH14','HOA','Mixue','DH14') 
-insert into SUPPORT values(15,'SP15','KH15','Elon Musk','Mixue2','DH15') 
-insert into SUPPORT values(16,'SP16','KH16','MINH','Bà TÁM','DH16') 
+insert into SUPPORT values(13,'SP13','KH13',N'LINH','Bà TÁM4','DH13') 
+insert into SUPPORT values(14,'SP14','KH14',N'HOA','Mixue','DH14') 
+insert into SUPPORT values(15,'SP15','KH15',N'Elon Musk','Mixue2','DH15') 
+insert into SUPPORT values(16,'SP16','KH16',N'MINH','Bà TÁM','DH16') 
 insert into SUPPORT values(17,'SP17','KH17',N'TUẤN','Bà TÁM2','DH17') 
-insert into SUPPORT values(18,'SP18','KH18','ANH','PHỤ KIỆN CÔNG NGHỆ','DH18') 
-insert into SUPPORT values(19,'SP19','KH19','HÒA','PHỤ KIỆN CÔNG NGHỆ0','DH19') 
+insert into SUPPORT values(18,'SP18','KH18',N'ANH','PHỤ KIỆN CÔNG NGHỆ','DH18') 
+insert into SUPPORT values(19,'SP19','KH19',N'HÒA','PHỤ KIỆN CÔNG NGHỆ0','DH19') 
 insert into SUPPORT values(20,'SP20','KH20',N'PHÚC','GiaDungOnline4','DH20') 
-insert into SUPPORT values(21,'SP21','KH21','LY','GiaDungOnline1','DH21') 
-insert into SUPPORT values(22,'SP22','KH22','LAN2','GiaDungOnline2','DH22') 
+insert into SUPPORT values(21,'SP21','KH21',N'LY','GiaDungOnline1','DH21') 
+insert into SUPPORT values(22,'SP22','KH22',N'LAN2','GiaDungOnline2','DH22') 
 insert into SUPPORT values(23,'SP23','KH23',N'LÝ','ThoiTrangOfficial3','DH23') 
-insert into SUPPORT values(24,'SP24','KH24','CHUNG','ThoiTrangOfficial4','DH24') 
-insert into SUPPORT values(25,'SP25','KH25','Mark Zuckerberg','PHỤ KIỆN CÔNG NGHỆ1','DH25')
+insert into SUPPORT values(24,'SP24','KH24',N'CHUNG','ThoiTrangOfficial4','DH24') 
+insert into SUPPORT values(25,'SP25','KH25',N'Mark Zuckerberg','PHỤ KIỆN CÔNG NGHỆ1','DH25')
 
 
 
 
 ---------------create view------------------
 ------------Lấy toàn bộ thông tin khách hàng-----------
+-- Create the view
 CREATE VIEW ToanBoKhachhang AS 
-SELECT NGUOIDUNG.IDNguoiDung AS NguoiDungID, NGUOIDUNG.ColumnName1, NGUOIDUNG.ColumnName2, ..., THONGTIN_ND.IDNguoiDung AS ThongTinID, THONGTIN_ND.ColumnName1, THONGTIN_ND.ColumnName2, ...
+SELECT NGUOIDUNG.*, THONGTIN_ND.*
 FROM NGUOIDUNG 
-INNER JOIN THONGTIN_ND ON NGUOIDUNG.IDNguoiDung = THONGTIN_ND.IDNguoiDung
+INNER JOIN THONGTIN_ND ON NGUOIDUNG.IDNguoiDung = THONGTIN_ND.IDNguoiDung;
+GO
 
 
-select *from ToanBoKhachhang
+SELECT * FROM ToanBoKhachhang
+
+
 
 ------------Lấy thông tin khách hàng có địa chỉ cổ nhuế 2 ---------------
 
