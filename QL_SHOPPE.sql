@@ -333,7 +333,7 @@ FROM NGUOIDUNG
 INNER JOIN THONGTIN_ND ON NGUOIDUNG.IDNguoiDung = THONGTIN_ND.IDNguoiDung;
 GO
 
-s
+
 SELECT * FROM ToanBoKhachhang
 
 
@@ -351,4 +351,4 @@ select *from LHKHACHHANG
 
 
 ------------IN TT Đơn Hàng Năm 2022----------
-CREATE VIEW 
+CREATE VIEW DONHANG

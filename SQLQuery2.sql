@@ -238,7 +238,7 @@ values
 ('19', N'Nguyễn Quỳnh Nga', N'Quảng Trị','0888945326'),
 ('20', N'Hoàng Thị Nhung', N'Hà Nam','0769459996')
 
---Nhập nhân viên
+
 insert into NhanVien(MaNhanVien,HoTen,NgaySinh,SoDienThoai)
 values
 ('GH11',N'Phạm Thu Hà','03/23/2003','0345672985'),
