@@ -100,31 +100,31 @@ insert into NGUOIDUNG values ('KH24', 'HIENLE', 'TE1234')
 insert into NGUOIDUNG values ('KH25', 'LEHUY', 'HUY21#')
 
 select *from GIOHANG 
-insert into  GIOHANG values (N'IPHONE 14 PRO', 1, 32000000,'ATM')
-insert into  GIOHANG values (N'QUẠT', 3, 200000,'TIỀN MẶT')
-insert into  GIOHANG values (N'ĐIỀU HOÀ', 1, 4000000,'ATM')
-insert into  GIOHANG values (N'ÁO THUN', 4, 500000,'ATM')
-insert into  GIOHANG values (N'MACBOOK', 1, 52000000,'ATM')
-insert into  GIOHANG values (N'LAPTOP LENOVO', 1, 18000000,'TIỀN MẶT')
-insert into  GIOHANG values (N'BÀN HỌC', 1, 150000,'TIỀN MẶT')
-insert into  GIOHANG values (N'GHẾ GAMING ', 1, 2000000,'ATM')
-insert into  GIOHANG values (N'SÁCH CNTT', 5, 250000,'TIỀN MẶT')
-insert into  GIOHANG values (N'SÁCH LẬP TRÌNH C/C++', 4, 100000,'ATM')
-insert into  GIOHANG values (N'SÁCH LẬP TRÌNH', 1, 32000000,'ATM')
-insert into  GIOHANG values (N'ĐỒ ĂN NHANH', 1, 25500,'ATM')
-insert into  GIOHANG values (N'PHỞ', 2, 40000,'TIỀN MẶT')
-insert into  GIOHANG values (N'TRÀ CHANH', 1, 15000,'ATM')
-insert into  GIOHANG values (N'TRÀ SỮA ', 4, 20000,'ATM')
-insert into  GIOHANG values (N'CƠM', 1, 15000,'TIỀN MẶT')
-insert into  GIOHANG values (N'BÚN BÒ', 1, 500000,'ATM')
-insert into  GIOHANG values (N'BÀN PHÍM CƠ', 1, 2000000,'ATM')
-insert into  GIOHANG values (N'CHUỘT 2', 1, 1000000,'ATM')
-insert into  GIOHANG values (N'GIÁ ĐỰNG SÁCH', 1, 150000,'TIỀN MẶT')
-insert into  GIOHANG values (N'BÀN LÀM VIỆC', 1, 2000000,'ATM')
-insert into  GIOHANG values (N'TỦ ', 1, 3000000,'ATM')
-insert into  GIOHANG values (N'DÉP', 2, 100000,'ATM')
-insert into  GIOHANG values (N'GIÀY NAM', 1, 2000000,'ATM')
-insert into  GIOHANG values (N'PHÍM COR RGB', 1, 32000000,'ATM')
+insert into  GIOHANG values (N'IPHONE 14 PRO', 1, 32000000,N'ATM')
+insert into  GIOHANG values (N'QUẠT', 3, 200000,N'TIỀN MẶT')
+insert into  GIOHANG values (N'ĐIỀU HOÀ', 1, 4000000,N'ATM')
+insert into  GIOHANG values (N'ÁO THUN', 4, 500000,N'ATM')
+insert into  GIOHANG values (N'MACBOOK', 1, 52000000,N'ATM')
+insert into  GIOHANG values (N'LAPTOP LENOVO', 1, 18000000,N'TIỀN MẶT')
+insert into  GIOHANG values (N'BÀN HỌC', 1, 150000,N'TIỀN MẶT')
+insert into  GIOHANG values (N'GHẾ GAMING ', 1, 2000000,N'ATM')
+insert into  GIOHANG values (N'SÁCH CNTT', 5, 250000,N'TIỀN MẶT')
+insert into  GIOHANG values (N'SÁCH LẬP TRÌNH C/C++', 4, 100000,N'ATM')
+insert into  GIOHANG values (N'SÁCH LẬP TRÌNH', 1, 32000000,N'ATM')
+insert into  GIOHANG values (N'ĐỒ ĂN NHANH', 1, 25500,N'ATM')
+insert into  GIOHANG values (N'PHỞ', 2, 40000,N'TIỀN MẶT')
+insert into  GIOHANG values (N'TRÀ CHANH', 1, 15000,N'ATM')
+insert into  GIOHANG values (N'TRÀ SỮA ', 4, 20000,N'ATM')
+insert into  GIOHANG values (N'CƠM', 1, 15000,N'TIỀN MẶT')
+insert into  GIOHANG values (N'BÚN BÒ', 1, 500000,N'ATM')
+insert into  GIOHANG values (N'BÀN PHÍM CƠ', 1, 2000000,N'ATM')
+insert into  GIOHANG values (N'CHUỘT 2', 1, 1000000,N'ATM')
+insert into  GIOHANG values (N'GIÁ ĐỰNG SÁCH', 1, 150000,N'TIỀN MẶT')
+insert into  GIOHANG values (N'BÀN LÀM VIỆC', 1, 2000000,N'ATM')
+insert into  GIOHANG values (N'TỦ ', 1, 3000000,N'ATM')
+insert into  GIOHANG values (N'DÉP', 2, 100000,N'ATM')
+insert into  GIOHANG values (N'GIÀY NAM', 1, 2000000,N'ATM')
+insert into  GIOHANG values (N'PHÍM COR RGB', 1, 32000000,N'ATM')
 
 SELECT *FROM THONGTIN_ND
 insert into  THONGTIN_ND values (N'KHOA','2003-02-10',N'CỔ NHUẾ 2','khoatk4444@gmail.com', '0987527888','KH01')
@@ -140,8 +140,8 @@ insert into  THONGTIN_ND values (N'MAI','2006-02-10',N'THANH HÓA','mai@gmail.co
 insert into  THONGTIN_ND values (N'THÀNH','2003-02-10',N'ĐOÀN THỊ ĐIỂM','thanh00@gmail.com', '0777527888','KH11')
 insert into  THONGTIN_ND values (N'ĐỨC','2005-02-10',N'TRẦN DUY HƯNG','ducdao@gmail.com', '0987527888','KH12')
 insert into  THONGTIN_ND values (N'LINH','2004-02-10',N'TÂY MỖ ','linh@gmail.com', '0987752788','KH13')
-insert into  THONGTIN_ND values (N'HOA','1999-02-10','VIN HOME','hoa932@gmail.com', '0988327888','KH14')
-insert into  THONGTIN_ND values (N'Elon Musk','1971-06-28','US','elon888@gmail.com', '0987438888','KH15')
+insert into  THONGTIN_ND values (N'HOA','1999-02-10',N'VIN HOME','hoa932@gmail.com', '0988327888','KH14')
+insert into  THONGTIN_ND values (N'Elon Musk','1971-06-28',N'US','elon888@gmail.com', '0987438888','KH15')
 insert into  THONGTIN_ND values (N'MINH','2003-05-10',N'HAI BÀ TRƯNG','minh@gmail.com', '0998527888','KH16')
 insert into  THONGTIN_ND values (N'TUẤN','2003-02-10',N'THANH TRÌ','tuan221@gmail.com', '0388527888','KH17')
 insert into  THONGTIN_ND values (N'ANH','2004-02-10',N'HÀ NỘI','anh32@gmail.com', '0987987888','KH18')
@@ -151,33 +151,33 @@ insert into  THONGTIN_ND values (N'LY','2003-06-27',N'CỔ NHUẾ','lyle99@gmail
 insert into  THONGTIN_ND values (N'LAN2','2003-02-10',N'PHÚC THỌ','lancute@gmail.com', '0990527888','KH22')
 insert into  THONGTIN_ND values (N'LÝ','2003-01-10',N'CỔ NHUẾ','ly272@gmail.com', '0987877888','KH23')
 insert into  THONGTIN_ND values (N'CHUNG','1996-02-10',N'CỔ NHUẾ 2','chung219@gmail.com', '0980827888','KH24')
-insert into  THONGTIN_ND values (N'Mark Zuckerberg','1971-06-28','US ','meta444@gmail.com', '0337527088','KH25')
+insert into  THONGTIN_ND values (N'Mark Zuckerberg','1971-06-28',N'US ','meta444@gmail.com', '0337527088','KH25')
 
 SELECT *FROM CUAHANG
-insert into CUAHANG values ('Apple official', N'Điện thoại,Macbook', 1000, N'IPHONE 14 PRO' )
-insert into CUAHANG values ('Apple official2', N'Điện thoại,Macbook', 500, N'MACBOOK')
-insert into CUAHANG values ('GiaDungOnline9', 'NGia Dụng', 200, N'QUẠT')
-insert into CUAHANG values ('GiaDungOnline6', N'Gia Dụng', 100, N'ĐIỀU HOÀ' )
-insert into CUAHANG values ('ThoiTrangOfficial', 'Thời trang', 5000, N'ÁO THUN')
-insert into CUAHANG values ('PCOnline', 'LAPTOP', 2000, N'LAPTOP LENOVO' )
-insert into CUAHANG values ('GiaDungOnline', N'Gia Dụng', 1000, N'GHẾ GAMING ' )
-insert into CUAHANG values ('GiaDungOnline7', N'Gia Dụng', 1000, N'BÀN HỌC' )
-insert into CUAHANG values ('BooksShop', N'Sách', 1300, N'SÁCH CNTT' )
-insert into CUAHANG values ('BooksShop2', N'Sách', 100, N'SÁCH LẬP TRÌNH C/C++')
-insert into CUAHANG values ('BooksShop3', N'Sách', 1900, N'SÁCH LẬP TRÌNH' )
-insert into CUAHANG values ('Cicle K', N'Đồ ăn', 100, N'ĐỒ ĂN NHANH' )
+insert into CUAHANG values (N'Apple official', N'Điện thoại,Macbook', 1000, N'IPHONE 14 PRO' )
+insert into CUAHANG values (N'Apple official2', N'Điện thoại,Macbook', 500, N'MACBOOK')
+insert into CUAHANG values (N'GiaDungOnline9', 'NGia Dụng', 200, N'QUẠT')
+insert into CUAHANG values (N'GiaDungOnline6', N'Gia Dụng', 100, N'ĐIỀU HOÀ' )
+insert into CUAHANG values (N'ThoiTrangOfficial', N'Thời trang', 5000, N'ÁO THUN')
+insert into CUAHANG values (N'PCOnline', N'LAPTOP', 2000, N'LAPTOP LENOVO' )
+insert into CUAHANG values (N'GiaDungOnline', N'Gia Dụng', 1000, N'GHẾ GAMING ' )
+insert into CUAHANG values (N'GiaDungOnline7', N'Gia Dụng', 1000, N'BÀN HỌC' )
+insert into CUAHANG values (N'BooksShop', N'Sách', 1300, N'SÁCH CNTT' )
+insert into CUAHANG values (N'BooksShop2', N'Sách', 100, N'SÁCH LẬP TRÌNH C/C++')
+insert into CUAHANG values (N'BooksShop3', N'Sách', 1900, N'SÁCH LẬP TRÌNH' )
+insert into CUAHANG values (N'Cicle K', N'Đồ ăn', 100, N'ĐỒ ĂN NHANH' )
 insert into CUAHANG values (N'Bà TÁM4', N'ĐỒ ĂN', 10, N'PHỞ' )
-insert into CUAHANG values ('Mixue', N'TS', 100, N'TRÀ CHANH' )
-insert into CUAHANG values ('Mixue2', N'TS', 20, N'TRÀ SỮA' )
+insert into CUAHANG values (N'Mixue', N'TS', 100, N'TRÀ CHANH' )
+insert into CUAHANG values (N'Mixue2', N'TS', 20, N'TRÀ SỮA' )
 insert into CUAHANG values (N'Bà TÁM', N'Đồ ăn', 100, N'CƠM' )
 insert into CUAHANG values (N'Bà TÁM2', N'Đồ ăn', 100, N'BÚN BÒ' )
 insert into CUAHANG values (N'PHỤ KIỆN CÔNG NGHỆ', N'phụ kiện', 300, N'BÀN PHÍM CƠ')
 insert into CUAHANG values (N'PHỤ KIỆN CÔNG NGHỆ0', N'phụ kiện', 3000,N'CHUỘT 2')
-insert into CUAHANG values ('GiaDungOnline4', N'Gia Dụng', 100, N'GIÁ ĐỰNG SÁCH' )
-insert into CUAHANG values ('GiaDungOnline1', N'Gia Dụng', 20,N'BÀN LÀM VIỆC'  )
-insert into CUAHANG values ('GiaDungOnline2', N'Gia Dụng', 20, N'TỦ' )
-insert into CUAHANG values ('ThoiTrangOfficial3', N'Thời trang', 310,N'DÉP')
-insert into CUAHANG values ('ThoiTrangOfficial4', N'Thời trang', 40,N'GIÀY NAM' )
+insert into CUAHANG values (N'GiaDungOnline4', N'Gia Dụng', 100, N'GIÁ ĐỰNG SÁCH' )
+insert into CUAHANG values (N'GiaDungOnline1', N'Gia Dụng', 20,N'BÀN LÀM VIỆC'  )
+insert into CUAHANG values (N'GiaDungOnline2', N'Gia Dụng', 20, N'TỦ' )
+insert into CUAHANG values (N'ThoiTrangOfficial3', N'Thời trang', 310,N'DÉP')
+insert into CUAHANG values (N'ThoiTrangOfficial4', N'Thời trang', 40,N'GIÀY NAM' )
 insert into CUAHANG values (N'PHỤ KIỆN CÔNG NGHỆ1', N'phụ kiện', 240, N'PHÍM COR RGB' )
 
 SELECT *FROM VANCHUYEN
@@ -289,31 +289,31 @@ insert into SHIPPER values(N'Tài Xế 24','0382362733','DH24','N24','SHOPPE COD
 insert into SHIPPER values(N'Tài Xế 25','0382362734','DH25','N25','SHOPPE COD')
 
 SELECT *FROM SUPPORT
-insert into SUPPORT values(1,'SP1','KH01','KHOA','Apple official','DH1') 
-insert into SUPPORT values(2,'SP2','KH02',N'THỊNH','Apple official2','DH2') 
-insert into SUPPORT values(3,'SP3','KH03',N'KHÁNH ','GiaDungOnline9','DH3') 
-insert into SUPPORT values(4,'SP4','KH04',N'LINH2','GiaDungOnline6','DH4') 
-insert into SUPPORT values(5,'SP5','KH05',N'HÙNG','ThoiTrangOfficial','DH5') 
-insert into SUPPORT values(6,'SP6','KH06',N'HUY','PCOnline','DH6') 
-insert into SUPPORT values(7,'SP7','KH07',N'LAN','GiaDungOnline','DH7') 
-insert into SUPPORT values(8,'SP8','KH08',N'THAO','GiaDungOnline7','DH8') 
-insert into SUPPORT values(9,'SP9','KH09',N'PHƯỢNG','BooksShop','DH9') 
-insert into SUPPORT values(10,'SP10','KH10',N'MAI','BooksShop2','DH10') 
-insert into SUPPORT values(11,'SP11','KH11',N'THÀNH','BooksShop3','DH11')
-insert into SUPPORT values(12,'SP12','KH12',N'ĐỨC','Cicle K','DH12') 
-insert into SUPPORT values(13,'SP13','KH13',N'LINH','Bà TÁM4','DH13') 
-insert into SUPPORT values(14,'SP14','KH14',N'HOA','Mixue','DH14') 
-insert into SUPPORT values(15,'SP15','KH15',N'Elon Musk','Mixue2','DH15') 
-insert into SUPPORT values(16,'SP16','KH16',N'MINH','Bà TÁM','DH16') 
-insert into SUPPORT values(17,'SP17','KH17',N'TUẤN','Bà TÁM2','DH17') 
-insert into SUPPORT values(18,'SP18','KH18',N'ANH','PHỤ KIỆN CÔNG NGHỆ','DH18') 
-insert into SUPPORT values(19,'SP19','KH19',N'HÒA','PHỤ KIỆN CÔNG NGHỆ0','DH19') 
-insert into SUPPORT values(20,'SP20','KH20',N'PHÚC','GiaDungOnline4','DH20') 
-insert into SUPPORT values(21,'SP21','KH21',N'LY','GiaDungOnline1','DH21') 
-insert into SUPPORT values(22,'SP22','KH22',N'LAN2','GiaDungOnline2','DH22') 
-insert into SUPPORT values(23,'SP23','KH23',N'LÝ','ThoiTrangOfficial3','DH23') 
-insert into SUPPORT values(24,'SP24','KH24',N'CHUNG','ThoiTrangOfficial4','DH24') 
-insert into SUPPORT values(25,'SP25','KH25',N'Mark Zuckerberg','PHỤ KIỆN CÔNG NGHỆ1','DH25')
+insert into SUPPORT values(1,'SP1','KH01',N'KHOA','NApple official','DH1') 
+insert into SUPPORT values(2,'SP2','KH02',N'THỊNH',N'Apple official2','DH2') 
+insert into SUPPORT values(3,'SP3','KH03',N'KHÁNH ',N'GiaDungOnline9','DH3') 
+insert into SUPPORT values(4,'SP4','KH04',N'LINH2',N'GiaDungOnline6','DH4') 
+insert into SUPPORT values(5,'SP5','KH05',N'HÙNG',N'ThoiTrangOfficial','DH5') 
+insert into SUPPORT values(6,'SP6','KH06',N'HUY','NPCOnline','DH6') 
+insert into SUPPORT values(7,'SP7','KH07',N'LAN',N'GiaDungOnline','DH7') 
+insert into SUPPORT values(8,'SP8','KH08',N'THAO',N'GiaDungOnline7','DH8') 
+insert into SUPPORT values(9,'SP9','KH09',N'PHƯỢNG',N'BooksShop','DH9') 
+insert into SUPPORT values(10,'SP10','KH10',N'MAI',N'BooksShop2','DH10') 
+insert into SUPPORT values(11,'SP11','KH11',N'THÀNH',N'BooksShop3','DH11')
+insert into SUPPORT values(12,'SP12','KH12',N'ĐỨC',N'Cicle K','DH12') 
+insert into SUPPORT values(13,'SP13','KH13',N'LINH',N'Bà TÁM4','DH13') 
+insert into SUPPORT values(14,'SP14','KH14',N'HOA',N'Mixue','DH14') 
+insert into SUPPORT values(15,'SP15','KH15',N'Elon Musk',N'Mixue2','DH15') 
+insert into SUPPORT values(16,'SP16','KH16',N'MINH',N'Bà TÁM','DH16') 
+insert into SUPPORT values(17,'SP17','KH17',N'TUẤN',N'Bà TÁM2','DH17') 
+insert into SUPPORT values(18,'SP18','KH18',N'ANH',N'PHỤ KIỆN CÔNG NGHỆ','DH18') 
+insert into SUPPORT values(19,'SP19','KH19',N'HÒA',N'PHỤ KIỆN CÔNG NGHỆ0','DH19') 
+insert into SUPPORT values(20,'SP20','KH20',N'PHÚC',N'GiaDungOnline4','DH20') 
+insert into SUPPORT values(21,'SP21','KH21',N'LY',N'GiaDungOnline1','DH21') 
+insert into SUPPORT values(22,'SP22','KH22',N'LAN2',N'GiaDungOnline2','DH22') 
+insert into SUPPORT values(23,'SP23','KH23',N'LÝ',N'ThoiTrangOfficial3','DH23') 
+insert into SUPPORT values(24,'SP24','KH24',N'CHUNG',N'ThoiTrangOfficial4','DH24') 
+insert into SUPPORT values(25,'SP25','KH25',N'Mark Zuckerberg',N'PHỤ KIỆN CÔNG NGHỆ1','DH25')
 
 
 
@@ -322,12 +322,18 @@ insert into SUPPORT values(25,'SP25','KH25',N'Mark Zuckerberg','PHỤ KIỆN CÔ
 ------------Lấy toàn bộ thông tin khách hàng-----------
 -- Create the view
 CREATE VIEW ToanBoKhachhang AS 
-SELECT NGUOIDUNG.*, THONGTIN_ND.*
+SELECT NGUOIDUNG.*,
+ THONGTIN_ND.TenND,
+ THONGTIN_ND.NgaySinh,
+ THONGTIN_ND.Email,
+ THONGTIN_ND.DiaChi,
+ THONGTIN_ND.SDT
+
 FROM NGUOIDUNG 
 INNER JOIN THONGTIN_ND ON NGUOIDUNG.IDNguoiDung = THONGTIN_ND.IDNguoiDung;
 GO
 
-
+s
 SELECT * FROM ToanBoKhachhang
 
 
@@ -339,7 +345,7 @@ SELECT THONGTIN_ND.TenND,
        THONGTIN_ND.SDT,
        THONGTIN_ND.DiaChi
 FROM THONGTIN_ND
-WHERE THONGTIN_ND.DiaChi = 'Cổ Nhuế 2'
+WHERE THONGTIN_ND.DiaChi = N'Cổ Nhuế 2'
 
 select *from LHKHACHHANG
 

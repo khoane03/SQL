@@ -1,30 +1,6 @@
-﻿ 		Nhóm 18_Quản lý trang sức
-
-				Danh sách thành viên:
-						
-						1. Lê Thị Hậu  MSV:2121050579 Nhóm trưởng
-						
-						2. Phạm Thu Hảo  MSV:2121050613
-					
-						3. Phạm Thị Hoài Thương  MSV:2121050604
-
-		Mô tả:
-  			Size(MaSize(k), TenSize)
-			MauSac(MaMauSac(k), TenMauSac)
-			ChatLieu(MaChatLieu(k), TenChatLieu)
-			NhaSanXuat(MaNhaSanXuat(k), TenNhaSanXuat, QuocGia)
-			NhaCungCap(MaNhaCungCap(k), TenNhaCungCap, DiaChi, SoDienThoai)
-			--KhachHang(MaKhachHang(k), TenKhachHang, DiaChi, SoDienThoai)
-			--NhanVien(MaNhanVien(k), HoTen, NgaySinh, SoDienThoai)
-			--HoaDon(MaHoaDon(k), MaKhachHang(kn), MaNhanVien(kn), NgayTao, TinhTrang)
-			--TrangSuc(MaTrangSuc(k), MaSize(kn), MaMauSac(kn), MaChatLieu(kn), MaNhaSanXuat(kn), MaNhaCungCap(kn), Ten, GiaThanh, SoLuong)
-			HoaDonChiTiet(MaHoaDon(k), MaTrangSuc(k), SoLuong, DonGia)	
-
-			====================================================================================================================================
-			====================================================================================================================================
-
-		create database QuanLyTrangSuc
-		Use QuanLyTrangSuc
+﻿
+create database QuanLyTrangSuc
+Use QuanLyTrangSuc
 
 -------------------------------create table-------------------------------
 
@@ -33,26 +9,26 @@ MaSize varchar(10),
 TenSize varchar(50),
 primary key(MaSize)
 )
-
+go
 create table MauSac(
 MaMauSac varchar(10),
 TenMauSac nvarchar(50),
 primary key(MaMauSac)
 )
-
+go
 create table ChatLieu(
 MaChatLieu varchar(10),
 TenChatLieu nvarchar(50),
 primary key(MaChatLieu)
 )
-
+go
 create table NhaSanXuat(
 MaNhaSanXuat varchar(10),
 TenNhaSanXuat nvarchar(50),
 QuocGia nvarchar(50),
 primary key(MaNhaSanXuat)
 )
-
+go
 create table NhaCungCap(
 MaNhaCungCap varchar(10),
 TenNhaCungCap nvarchar(50),
@@ -60,7 +36,7 @@ DiaChi nvarchar(300),
 SoDienThoai varchar(15),
 primary key(MaNhaCungCap)
 )
-
+go
 create table KhachHang(
 MaKhachHang varchar(10),
 TenKhachHang nvarchar(50),
@@ -68,7 +44,7 @@ DiaChi nvarchar(300),
 SoDienThoai varchar(15),
 primary key(MaKhachHang)
 )
-
+go
 create table NhanVien(
 MaNhanVien varchar(10),
 HoTen nvarchar(50),
@@ -76,7 +52,7 @@ NgaySinh date,
 SoDienThoai varchar(15),
 primary key(MaNhanVien)
 )
-
+go
 create table HoaDon(
 MaHoaDon varchar(10),
 MaKhachHang varchar(10),
@@ -87,7 +63,7 @@ primary key(MaHoaDon),
 CONSTRAINT FK_KhachHang FOREIGN KEY(MaKhachHang) REFERENCES KhachHang(MaKhachHang),
 CONSTRAINT FK_NhanVien FOREIGN KEY(MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 )
-
+gp
 create table TrangSuc(
 MaTrangSuc varchar(10),
 MaSize varchar(10),
@@ -105,7 +81,7 @@ CONSTRAINT FK_NhaSanXuat FOREIGN KEY(MaNhaSanXuat) REFERENCES NhaSanXuat(MaNhaSa
 CONSTRAINT FK_ChatLieu FOREIGN KEY(MaChatLieu) REFERENCES ChatLieu(MaChatLieu),
 CONSTRAINT FK_NhaCungCap FOREIGN KEY(MaNhaCungCap) REFERENCES NhaCungCap(MaNhaCungCap),
 )
-
+go
 create table HoaDonChiTiet(
 MaHoaDon varchar(10),
 MaTrangSuc varchar(10),
@@ -115,7 +91,7 @@ primary key(MaHoaDon, MaTrangSuc),
 CONSTRAINT FK_TrangSuc FOREIGN KEY(MaTrangSuc) REFERENCES TrangSuc(MaTrangSuc),
 CONSTRAINT FK_HoaDon FOREIGN KEY(MaHoaDon) REFERENCES HoaDon(MaHoaDon),
 )
-
+go
 -------------------------------Nhập ngắn gọn-------------------------------
 
 --Nhập bảng size
