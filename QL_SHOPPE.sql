@@ -377,6 +377,28 @@ AND SUPPORT.IDDonHang = DONHANG.IDDonHang
 
 SELECT *FROM ALLDATABASE2
 
+CREATE VIEW View_AllData AS
+SELECT ND.IDNguoiDung, ND.TaiKhoan, ND.MatKhau,
+       GH.TenSP, GH.SoLuong, GH.Gia, GH.PhuongThucThanhToan,
+       TT.TenND, TT.NgaySinh, TT.DiaChi, TT.Email, TT.SDT,
+       CH.PhanLoai, CH.SoLuongCon,
+       VC.ThoiGianGD,
+       DH.NgayDatHang,
+       NS.TenCH,
+       SH.TenTX, SH.SDTS
+FROM NGUOIDUNG ND
+JOIN THONGTIN_ND TT ON ND.IDNguoiDung = TT.IDNguoiDung
+JOIN GIOHANG GH ON GH.TenSP = ND.IDNguoiDung
+JOIN CUAHANG CH ON CH.TenSP = GH.TenSP
+JOIN VANCHUYEN VC ON VC.DonVi = ND.IDNguoiDung -- Thay DH.DonVi thành ND.IDNguoiDung
+JOIN DONHANG DH ON DH.TenSP = GH.TenSP AND DH.TenND = TT.TenND
+JOIN NOWSHIP NS ON NS.MaDH = DH.IDDonHang
+JOIN SHIPPER SH ON SH.IDDonHang = DH.IDDonHang
+JOIN SUPPORT SP ON SP.IDNguoiDung = ND.IDNguoiDung AND SP.TenND = TT.TenND AND SP.TenCH = CH.TenCH AND SP.IDDonHang = DH.IDDonHang;
+
+select *from View_AllData
+
+
 
 ------------Lấy thông tin khách hàng-----------
 CREATE VIEW ToanBoKhachhang AS 
@@ -472,6 +494,7 @@ BEGIN
 END
 
 PRINT dbo.GIATRI(N'QUẠT')
+
 ------------------tìm của hàng kho có số lượng >= 1000---------------
 creare FUNCTION TIMKIEMSL3()
 RETURNS NVARCHAR(30)
