@@ -61,7 +61,7 @@ CREATE TABLE SHIPPER (
 )
 GO
 CREATE TABLE SUPPORT (
-    MaNV INT PRIMARY KEY,
+    MaNV varchar(10) PRIMARY KEY,
     TenNV VARCHAR(40),
     IDNguoiDung VARCHAR(30) FOREIGN KEY REFERENCES NGUOIDUNG(IDNguoiDung),
     TenND NVARCHAR(20) FOREIGN KEY REFERENCES THONGTIN_ND(TenND),
@@ -159,9 +159,11 @@ values
  (N'CHUNG','1996-02-10',N'CỔ NHUẾ 2','chung219@gmail.com', '0980827888','KH24'),
  (N'Mark Zuckerberg','1971-06-28',N'US ','meta444@gmail.com', '0337527088','KH25')
 
+
+
 SELECT *FROM CUAHANG
 insert into CUAHANG(TenCH,PhanLoai,SoLuongCon,TenSP)
- values 
+values 
 (N'Apple official', N'Điện thoại,Macbook', 1000, N'IPHONE 14 PRO' ),
 (N'Apple official2', N'Điện thoại,Macbook', 500, N'MACBOOK'),
 (N'GiaDungOnline9', 'NGia Dụng', 200, N'QUẠT'),
@@ -190,7 +192,7 @@ insert into CUAHANG(TenCH,PhanLoai,SoLuongCon,TenSP)
 
 SELECT *FROM VANCHUYEN
 insert into VANCHUYEN(DonVi,ThoiGianGD)
- values 
+values 
  ('SHOPPE', '2023-04-29'),
  ('GHTK', '2023-02-19'),
  ('NOW', '2023-05-19'),
@@ -307,38 +309,90 @@ values
 SELECT *FROM SUPPORT
 insert into SUPPORT(MaNV,TenNV,IDNguoiDung,TenND,TenCH,IDDonHang) 
 values
-(1,'SP1','KH01',N'KHOA',N'Apple official','DH1'), 
-(2,'SP2','KH02',N'THỊNH',N'Apple official2','DH2'), 
-(3,'SP3','KH03',N'KHÁNH ',N'GiaDungOnline9','DH3'), 
-(4,'SP4','KH04',N'LINH2',N'GiaDungOnline6','DH4'), 
-(5,'SP5','KH05',N'HÙNG',N'ThoiTrangOfficial','DH5'), 
-(6,'SP6','KH06',N'HUY',N'PCOnline','DH6'), 
-(7,'SP7','KH07',N'LAN',N'GiaDungOnline','DH7'), 
-(8,'SP8','KH08',N'THAO',N'GiaDungOnline7','DH8'), 
-(9,'SP9','KH09',N'PHƯỢNG',N'BooksShop','DH9'), 
-(10,'SP10','KH10',N'MAI',N'BooksShop2','DH10'), 
-(11,'SP11','KH11',N'THÀNH',N'BooksShop3','DH11'),
-(12,'SP12','KH12',N'ĐỨC',N'Cicle K','DH12'), 
-(13,'SP13','KH13',N'LINH',N'Bà TÁM4','DH13'), 
-(14,'SP14','KH14',N'HOA',N'Mixue','DH14'), 
-(15,'SP15','KH15',N'Elon Musk',N'Mixue2','DH15'), 
-(16,'SP16','KH16',N'MINH',N'Bà TÁM','DH16'), 
-(17,'SP17','KH17',N'TUẤN',N'Bà TÁM2','DH17'), 
-(18,'SP18','KH18',N'ANH',N'PHỤ KIỆN CÔNG NGHỆ','DH18'), 
-(19,'SP19','KH19',N'HÒA',N'PHỤ KIỆN CÔNG NGHỆ0','DH19'), 
-(20,'SP20','KH20',N'PHÚC',N'GiaDungOnline4','DH20'), 
-(21,'SP21','KH21',N'LY',N'GiaDungOnline1','DH21'), 
-(22,'SP22','KH22',N'LAN2',N'GiaDungOnline2','DH22'), 
-(23,'SP23','KH23',N'LÝ',N'ThoiTrangOfficial3','DH23'), 
-(24,'SP24','KH24',N'CHUNG',N'ThoiTrangOfficial4','DH24'), 
-(25,'SP25','KH25',N'Mark Zuckerberg',N'PHỤ KIỆN CÔNG NGHỆ1','DH25')
+('NV1','SP1','KH01',N'KHOA',N'Apple official','DH1'), 
+('NV2','SP2','KH02',N'THỊNH',N'Apple official2','DH2'), 
+('NV3','SP3','KH03',N'KHÁNH ',N'GiaDungOnline9','DH3'), 
+('NV4','SP4','KH04',N'LINH2',N'GiaDungOnline6','DH4'), 
+('NV5','SP5','KH05',N'HÙNG',N'ThoiTrangOfficial','DH5'), 
+('NV6','SP6','KH06',N'HUY',N'PCOnline','DH6'), 
+('NV7','SP7','KH07',N'LAN',N'GiaDungOnline','DH7'), 
+('NV8','SP8','KH08',N'THAO',N'GiaDungOnline7','DH8'), 
+('NV9','SP9','KH09',N'PHƯỢNG',N'BooksShop','DH9'), 
+('NV10','SP10','KH10',N'MAI',N'BooksShop2','DH10'), 
+('NV11','SP11','KH11',N'THÀNH',N'BooksShop3','DH11'),
+('NV12','SP12','KH12',N'ĐỨC',N'Cicle K','DH12'), 
+('NV13','SP13','KH13',N'LINH',N'Bà TÁM4','DH13'), 
+('NV14','SP14','KH14',N'HOA',N'Mixue','DH14'), 
+('NV15','SP15','KH15',N'Elon Musk',N'Mixue2','DH15'), 
+('NV16','SP16','KH16',N'MINH',N'Bà TÁM','DH16'), 
+('NV17','SP17','KH17',N'TUẤN',N'Bà TÁM2','DH17'), 
+('NV18','SP18','KH18',N'ANH',N'PHỤ KIỆN CÔNG NGHỆ','DH18'), 
+('NV19','SP19','KH19',N'HÒA',N'PHỤ KIỆN CÔNG NGHỆ0','DH19'), 
+('NV20','SP20','KH20',N'PHÚC',N'GiaDungOnline4','DH20'), 
+('NV21','SP21','KH21',N'LY',N'GiaDungOnline1','DH21'), 
+('NV22','SP22','KH22',N'LAN2',N'GiaDungOnline2','DH22'), 
+('NV23','SP23','KH23',N'LÝ',N'ThoiTrangOfficial3','DH23'), 
+('NV24','SP24','KH24',N'CHUNG',N'ThoiTrangOfficial4','DH24'), 
+('NV25','SP25','KH25',N'Mark Zuckerberg',N'PHỤ KIỆN CÔNG NGHỆ1','DH25')
 
 
 
 
----------------create view------------------
-------------Lấy toàn bộ thông tin khách hàng-----------
--- Create the view
+---------------CREATE VIEW------------------
+
+--------------LẤY TOÀN BỘ THÔNG TIN TRONG DATABASE------------
+CREATE VIEW ALLDATABASE2 AS
+SELECT THONGTIN_ND.*,
+       NGUOIDUNG.TaiKhoan AS 'TÀI KHOẢN',
+       NGUOIDUNG.MatKhau AS 'MẬT KHẨU',
+       GIOHANG.*,
+       CUAHANG.TenCH AS 'TÊN CỦA HÀNG',
+       CUAHANG.PhanLoai AS 'LOẠI',
+       CUAHANG.SoLuongCon AS 'CÒN LẠI',
+       DONHANG.IDDonHang AS 'ID ĐƠN',
+       DONHANG.NgayDatHang AS 'NGÀY ĐẶT HÀNG',
+       VANCHUYEN.*,
+       NOWSHIP.MaDH AS 'MÃ ĐƠN HÀNG',
+       SHIPPER.TenTX AS 'TÊN TÀI XẾ',
+       SHIPPER.SDT AS 'SỐ ĐIỆN THOẠI',
+       SUPPORT.MaNV AS 'MÃ NHÂN VIÊN',
+       SUPPORT.TenNV AS 'TÊN NHÂN VIÊN'
+FROM THONGTIN_ND , NGUOIDUNG, GIOHANG, CUAHANG, DONHANG, VANCHUYEN, NOWSHIP,SHIPPER,SUPPORT
+WHERE 
+    THONGTIN_ND.IDNguoiDung = NGUOIDUNG.IDNguoiDung 
+AND GIOHANG.TenSP = CUAHANG.TenSP
+AND DONHANG.TenSP = GIOHANG.TenSP
+AND DONHANG.TenND = THONGTIN_ND.TenND
+AND DONHANG.DonVi = VANCHUYEN.DonVi
+AND NOWSHIP.TenSP = GIOHANG.TenSP
+AND NOWSHIP.TenCH = CUAHANG.TenCH
+AND SHIPPER.IDDonHang = DONHANG.IDDonHang
+AND SHIPPER.MaDH = NOWSHIP.MaDH
+AND SHIPPER.DonVi = VANCHUYEN.DonVi
+AND SUPPORT.IDNguoiDung = NGUOIDUNG.IDNguoiDung
+AND SUPPORT.TenND = THONGTIN_ND.TenND
+AND SUPPORT.TenCH = CUAHANG.TenCH
+AND SUPPORT.IDDonHang = DONHANG.IDDonHang
+
+
+CREATE VIEW ThongTinToanBo AS
+SELECT *
+FROM NGUOIDUNG
+JOIN GIOHANG ON NGUOIDUNG.IDNguoiDung = GIOHANG.TenSP
+JOIN THONGTIN_ND ON NGUOIDUNG.IDNguoiDung = THONGTIN_ND.IDNguoiDung
+JOIN CUAHANG ON GIOHANG.TenSP = CUAHANG.TenSP
+JOIN VANCHUYEN ON DONHANG.DonVi = VANCHUYEN.DonVi
+JOIN DONHANG ON GIOHANG.TenSP = DONHANG.TenSP AND THONGTIN_ND.TenND = DONHANG.TenND
+JOIN NOWSHIP ON GIOHANG.TenSP = NOWSHIP.TenSP AND CUAHANG.TenCH = NOWSHIP.TenCH
+JOIN SHIPPER ON DONHANG.IDDonHang = SHIPPER.IDDonHang AND NOWSHIP.MaDH = SHIPPER.MaDH AND VANCHUYEN.DonVi = SHIPPER.DonVi
+JOIN SUPPORT ON NGUOIDUNG.IDNguoiDung = SUPPORT.IDNguoiDung AND THONGTIN_ND.TenND = SUPPORT.TenND AND CUAHANG.TenCH = SUPPORT.TenCH AND DONHANG.IDDonHang = SUPPORT.IDDonHang;
+
+SELECT *FROM ALLDATABASE2
+
+
+
+
+------------Lấy thông tin khách hàng-----------
 CREATE VIEW ToanBoKhachhang AS 
 SELECT NGUOIDUNG.*,
  THONGTIN_ND.TenND,
@@ -349,6 +403,8 @@ SELECT NGUOIDUNG.*,
 
 FROM NGUOIDUNG 
 INNER JOIN THONGTIN_ND ON NGUOIDUNG.IDNguoiDung = THONGTIN_ND.IDNguoiDung
+
+
 
 
 
@@ -378,3 +434,14 @@ INNER JOIN THONGTIN_ND ON DONHANG.TenND = THONGTIN_ND.TenND
 WHERE YEAR(NgayDatHang) = 2022;
 
 SELECT *FROM CHITIETDON
+
+------------Top 5 đơn có giá cao nhất---------------
+CREATE VIEW DONCOGIACAO AS
+SELECT TOP 5 
+GIOHANG.TenSP AS 'TÊN SẢN PHẨM',
+GIOHANG.Gia AS 'GIÁ'
+FROM GIOHANG
+ORDER BY GIOHANG.GIA DESC
+
+SELECT *FROM DONCOGIACAO
+
