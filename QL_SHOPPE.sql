@@ -54,7 +54,7 @@ CREATE TABLE NOWSHIP (
 GO
 CREATE TABLE SHIPPER (
     TenTX NVARCHAR(40) PRIMARY KEY,
-    SDT VARCHAR(10),
+    SDTS VARCHAR(10),
     IDDonHang VARCHAR(30) FOREIGN KEY REFERENCES DONHANG(IDDonHang),
     MaDH VARCHAR(20) FOREIGN KEY REFERENCES NOWSHIP(MaDH),
     DonVi VARCHAR(30) FOREIGN KEY REFERENCES VANCHUYEN(DonVi)
@@ -278,7 +278,7 @@ insert into NOWSHIP(MaDH,TenSP,TenCH)
  ('N25',N'PHÍM COR RGB',N'PHỤ KIỆN CÔNG NGHỆ1')
 
 SELECT *FROM SHIPPER
-insert into SHIPPER(TenTX,SDT,IDDonHang,MaDH,DonVi) 
+insert into SHIPPER(TenTX,SDTS,IDDonHang,MaDH,DonVi) 
 values
 (N'Tài Xế 1','0382362710','DH1','N1','SHOPPE'),
 (N'Tài Xế 2','0382362711','DH2','N2','GHTK'),
@@ -354,7 +354,7 @@ SELECT THONGTIN_ND.*,
        VANCHUYEN.*,
        NOWSHIP.MaDH AS 'MÃ ĐƠN HÀNG',
        SHIPPER.TenTX AS 'TÊN TÀI XẾ',
-       SHIPPER.SDT AS 'SỐ ĐIỆN THOẠI',
+       SHIPPER.SDTS AS 'SỐ ĐIỆN THOẠI',
        SUPPORT.MaNV AS 'MÃ NHÂN VIÊN',
        SUPPORT.TenNV AS 'TÊN NHÂN VIÊN'
 FROM THONGTIN_ND , NGUOIDUNG, GIOHANG, CUAHANG, DONHANG, VANCHUYEN, NOWSHIP,SHIPPER,SUPPORT
@@ -375,21 +375,7 @@ AND SUPPORT.TenCH = CUAHANG.TenCH
 AND SUPPORT.IDDonHang = DONHANG.IDDonHang
 
 
-CREATE VIEW ThongTinToanBo AS
-SELECT *
-FROM NGUOIDUNG
-JOIN GIOHANG ON NGUOIDUNG.IDNguoiDung = GIOHANG.TenSP
-JOIN THONGTIN_ND ON NGUOIDUNG.IDNguoiDung = THONGTIN_ND.IDNguoiDung
-JOIN CUAHANG ON GIOHANG.TenSP = CUAHANG.TenSP
-JOIN VANCHUYEN ON DONHANG.DonVi = VANCHUYEN.DonVi
-JOIN DONHANG ON GIOHANG.TenSP = DONHANG.TenSP AND THONGTIN_ND.TenND = DONHANG.TenND
-JOIN NOWSHIP ON GIOHANG.TenSP = NOWSHIP.TenSP AND CUAHANG.TenCH = NOWSHIP.TenCH
-JOIN SHIPPER ON DONHANG.IDDonHang = SHIPPER.IDDonHang AND NOWSHIP.MaDH = SHIPPER.MaDH AND VANCHUYEN.DonVi = SHIPPER.DonVi
-JOIN SUPPORT ON NGUOIDUNG.IDNguoiDung = SUPPORT.IDNguoiDung AND THONGTIN_ND.TenND = SUPPORT.TenND AND CUAHANG.TenCH = SUPPORT.TenCH AND DONHANG.IDDonHang = SUPPORT.IDDonHang;
-
 SELECT *FROM ALLDATABASE2
-
-
 
 
 ------------Lấy thông tin khách hàng-----------
@@ -445,3 +431,80 @@ ORDER BY GIOHANG.GIA DESC
 
 SELECT *FROM DONCOGIACAO
 
+------------- FUNTION(1) ----------------
+------nhập tên sản phẩm cho biết giá-----------
+CREATE FUNCTION GIA(@TEN NVARCHAR(40))
+RETURNS FLOAT 
+as
+BEGIN
+  RETURN(SELECT Gia FROM GIOHANG
+  where TenSP = @TEN
+  )
+END
+print dbo.GIA(N'IPHONE 14 PRO')
+
+------đếm hóa đơn năm 2023-------
+
+CREATE FUNCTION DEMSL(@nam int)
+RETURN int 
+as
+BEGIN
+     DECLARE @count int = 0
+     SELECT @count = count(*)
+      from DONHANG
+      WHERE YEAR(NgayDatHang) = @nam
+      RETURN @count 
+      end
+SELECT dbo.DEMSL(2023) as 'SoLuongDonHangNam2023'
+
+-------tổng giá trị đơn hàng--------
+AFTER FUNCTION GIATRI(@tensp nvarchar(40))
+RETURNS int
+AS 
+BEGIN 
+    DECLARE @giatri int;
+
+    SELECT @giatri = SUM(SoLuong * Gia)
+    FROM GIOHANG
+    WHERE TenSP = @tensp;
+
+    RETURN @giatri;
+END
+
+PRINT dbo.GIATRI(N'QUẠT')
+------------------tìm của hàng kho có số lượng >= 1000---------------
+creare FUNCTION TIMKIEMSL3()
+RETURNS NVARCHAR(30)
+AS 
+BEGIN 
+    DECLARE @TenCH NVARCHAR(40);
+
+    SELECT top 5 @TenCH = TenCH
+    FROM CUAHANG
+    WHERE SoLuongCon >= 1000;
+
+    RETURN @TenCH;
+END;
+
+SELECT *
+FROM CUAHANG
+WHERE TenCH = dbo.TIMKIEMSL();
+
+SELECT dbo.TIMKIEMSL() AS 'TÊN CỬA HÀNG' from CUAHANG
+
+
+
+
+--------------FUNTION (2)----------------
+--------Lấy ra thông tin tài khoản -------------
+CREATE FUNCTION dbo.ThongTinDN1(@ID varchar(30))
+RETURNS TABLE
+AS
+RETURN (
+    SELECT TaiKhoan, MatKhau
+    FROM NGUOIDUNG
+    WHERE IDNguoiDung = @ID
+);
+
+SELECT *
+FROM dbo.ThongTinDN1('KH01')

@@ -63,7 +63,7 @@ primary key(MaHoaDon),
 CONSTRAINT FK_KhachHang FOREIGN KEY(MaKhachHang) REFERENCES KhachHang(MaKhachHang),
 CONSTRAINT FK_NhanVien FOREIGN KEY(MaNhanVien) REFERENCES NhanVien(MaNhanVien)
 )
-gp
+GO
 create table TrangSuc(
 MaTrangSuc varchar(10),
 MaSize varchar(10),
@@ -371,6 +371,7 @@ end
 
 select MaHoaDon, dbo.SoLuongHoaDon(N'Đã thanh toán',03,2023) as SLHDTheoYeuCau
 from HoaDon
+
 
 
 
