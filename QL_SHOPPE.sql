@@ -10,13 +10,6 @@ CREATE TABLE NGUOIDUNG (
     MatKhau VARCHAR(30)
 )
 GO
-CREATE TABLE GIOHANG (
-    TenSP NVARCHAR(40) PRIMARY KEY,
-    SoLuong INT,
-    Gia FLOAT,
-    PhuongThucThanhToan nvarchar(40)
-)
-GO
 CREATE TABLE THONGTIN_ND (
     TenND NVARCHAR(20) NOT NULL PRIMARY KEY,
     NgaySinh DATE,
@@ -27,15 +20,23 @@ CREATE TABLE THONGTIN_ND (
 )
 GO
 CREATE TABLE CUAHANG (
-    TenCH NVARCHAR(30) PRIMARY KEY,
+    IDCuaHang varchar(10) PRIMARY KEY,
+    TenCH NVARCHAR(30), 
     PhanLoai NVARCHAR(30),
-    SoLuongCon INT,
-    TenSP NVARCHAR(40) FOREIGN KEY REFERENCES GIOHANG(TenSP)
+    SoLuongCon INT
+)
+GO
+CREATE TABLE GIOHANG (
+    TenSP NVARCHAR(40) PRIMARY KEY,
+    SoLuong INT,
+    Gia FLOAT,
+    PhuongThucThanhToan nvarchar(40),
+    IDCuaHang varchar(10) FOREIGN KEY REFERENCES CUAHANG(IDCuaHang)
 )
 GO
 CREATE TABLE VANCHUYEN (
-    DonVi VARCHAR(30) PRIMARY KEY,
-    ThoiGianGD DATE
+    MaDV VARCHAR(30) PRIMARY KEY,
+    TenDV NVARCHAR(30)
 )
 GO
 CREATE TABLE DONHANG (
@@ -43,13 +44,13 @@ CREATE TABLE DONHANG (
     NgayDatHang DATE,
     TenSP NVARCHAR(40) FOREIGN KEY REFERENCES GIOHANG(TenSP),
     TenND NVARCHAR(20) FOREIGN KEY REFERENCES THONGTIN_ND(TenND),
-    DonVi VARCHAR(30) FOREIGN KEY REFERENCES VANCHUYEN(DonVi)
+    MaDV VARCHAR(30) FOREIGN KEY REFERENCES VANCHUYEN(MaDV)
 )
 GO
 CREATE TABLE NOWSHIP (
     MaDH varchar(20) PRIMARY KEY,
     TenSP NVARCHAR(40) FOREIGN KEY REFERENCES GIOHANG(TenSP),
-    TenCH NVARCHAR(30) FOREIGN KEY REFERENCES CUAHANG(TenCH)
+    IDCuaHang VARCHAR(10) FOREIGN KEY REFERENCES CUAHANG(IDCuaHang)
 )
 GO
 CREATE TABLE SHIPPER (
@@ -57,16 +58,14 @@ CREATE TABLE SHIPPER (
     SDTS VARCHAR(10),
     IDDonHang VARCHAR(30) FOREIGN KEY REFERENCES DONHANG(IDDonHang),
     MaDH VARCHAR(20) FOREIGN KEY REFERENCES NOWSHIP(MaDH),
-    DonVi VARCHAR(30) FOREIGN KEY REFERENCES VANCHUYEN(DonVi)
+    MaDV VARCHAR(30) FOREIGN KEY REFERENCES VANCHUYEN(MaDV)
 )
 GO
 CREATE TABLE SUPPORT (
     MaNV varchar(10) PRIMARY KEY,
-    TenNV VARCHAR(40),
-    IDNguoiDung VARCHAR(30) FOREIGN KEY REFERENCES NGUOIDUNG(IDNguoiDung),
+    TenNV NVARCHAR(40),
     TenND NVARCHAR(20) FOREIGN KEY REFERENCES THONGTIN_ND(TenND),
-    TenCH NVARCHAR(30) FOREIGN KEY REFERENCES CUAHANG(TenCH),
-    IDDonHang VARCHAR(30) FOREIGN KEY REFERENCES DONHANG(IDDonHang)
+    IDCuaHang VARCHAR(10) FOREIGN KEY REFERENCES CUAHANG(IDCuaHang),
 )
 
 
@@ -102,33 +101,33 @@ insert into NGUOIDUNG(IDNguoiDung,TaiKhoan,MatKhau)
 ('KH25', 'LEHUY', 'HUY21#')
 
 select *from GIOHANG 
-insert into  GIOHANG(TenSP,SoLuong,Gia,PhuongThucThanhToan)
+insert into  GIOHANG(TenSP,SoLuong,Gia,PhuongThucThanhToan,IDCuaHang)
  values 
- (N'IPHONE 14 PRO', 1, 32000000,N'ATM'),
- (N'QUẠT', 3, 200000,N'TIỀN MẶT'),
- (N'ĐIỀU HOÀ', 1, 4000000,N'ATM'),
- (N'ÁO THUN', 4, 500000,N'ATM'),
- (N'MACBOOK', 1, 52000000,N'ATM'),
- (N'LAPTOP LENOVO', 1, 18000000,N'TIỀN MẶT'),
- (N'BÀN HỌC', 1, 150000,N'TIỀN MẶT'),
- (N'GHẾ GAMING ', 1, 2000000,N'ATM'),
- (N'SÁCH CNTT', 5, 250000,N'TIỀN MẶT'),
- (N'SÁCH LẬP TRÌNH C/C++', 4, 100000,N'ATM'),
- (N'SÁCH LẬP TRÌNH', 1, 32000000,N'ATM'),
- (N'ĐỒ ĂN NHANH', 1, 25500,N'ATM'),
- (N'PHỞ', 2, 40000,N'TIỀN MẶT'),
- (N'TRÀ CHANH', 1, 15000,N'ATM'),
- (N'TRÀ SỮA ', 4, 20000,N'ATM'),
- (N'CƠM', 1, 15000,N'TIỀN MẶT'),
- (N'BÚN BÒ', 1, 500000,N'ATM'),
- (N'BÀN PHÍM CƠ', 1, 2000000,N'ATM'),
- (N'CHUỘT 2', 1, 1000000,N'ATM'),
- (N'GIÁ ĐỰNG SÁCH', 1, 150000,N'TIỀN MẶT'),
- (N'BÀN LÀM VIỆC', 1, 2000000,N'ATM'),
- (N'TỦ ', 1, 3000000,N'ATM'),
- (N'DÉP', 2, 100000,N'ATM'),
- (N'GIÀY NAM', 1, 2000000,N'ATM'),
- (N'PHÍM COR RGB', 1, 32000000,N'ATM')
+ (N'IPHONE 14 PRO', 1, 32000000,N'ATM','CH1'),
+ (N'QUẠT', 3, 200000,N'TIỀN MẶT','CH2'),
+ (N'ĐIỀU HOÀ', 1, 4000000,N'ATM','CH2'),
+ (N'ÁO THUN', 4, 500000,N'ATM','CH3'),
+ (N'MACBOOK', 1, 52000000,N'ATM','CH1'),
+ (N'LAPTOP LENOVO', 1, 18000000,N'TIỀN MẶT','CH6'),
+ (N'BÀN HỌC', 1, 150000,N'TIỀN MẶT','CH2'),
+ (N'GHẾ GAMING ', 1, 2000000,N'ATM','CH17'),
+ (N'SÁCH CNTT', 5, 250000,N'TIỀN MẶT','CH7'),
+ (N'SÁCH LẬP TRÌNH C/C++', 4, 100000,N'ATM','CH7'),
+ (N'SÁCH LẬP TRÌNH', 1, 32000000,N'ATM','CH7'),
+ (N'ĐỒ ĂN NHANH', 1, 25500,N'ATM','CH11'),
+ (N'PHỞ', 2, 40000,N'TIỀN MẶT','CH8'),
+ (N'TRÀ CHANH', 1, 15000,N'ATM','CH5'),
+ (N'TRÀ SỮA ', 4, 20000,N'ATM','CH10'),
+ (N'CƠM', 1, 15000,N'TIỀN MẶT','CH8'),
+ (N'BÚN BÒ', 1, 500000,N'ATM','CH8'),
+ (N'BÀN PHÍM CƠ', 1, 2000000,N'ATM','CH14'),
+ (N'CHUỘT 2', 1, 1000000,N'ATM','CH14'),
+ (N'GIÁ ĐỰNG SÁCH', 1, 150000,N'TIỀN MẶT','CH2'),
+ (N'BÀN LÀM VIỆC', 1, 2000000,N'ATM','CH2'),
+ (N'TỦ ', 1, 3000000,N'ATM','CH2'),
+ (N'DÉP', 2, 100000,N'ATM','CH3'),
+ (N'GIÀY NAM', 1, 2000000,N'ATM','CH3'),
+ (N'PHÍM COR RGB', 1, 32000000,N'ATM','CH9')
 
 SELECT *FROM THONGTIN_ND
 insert into  THONGTIN_ND(TenND,NgaySinh,DiaChi,Email,SDT,IDNguoiDung) 
@@ -162,186 +161,177 @@ values
 
 
 SELECT *FROM CUAHANG
-insert into CUAHANG(TenCH,PhanLoai,SoLuongCon,TenSP)
+insert into CUAHANG(IDCuaHang,TenCH,PhanLoai,SoLuongCon)
 values 
-(N'Apple official', N'Điện thoại,Macbook', 1000, N'IPHONE 14 PRO' ),
-(N'Apple official2', N'Điện thoại,Macbook', 500, N'MACBOOK'),
-(N'GiaDungOnline9', 'NGia Dụng', 200, N'QUẠT'),
-(N'GiaDungOnline6', N'Gia Dụng', 100, N'ĐIỀU HOÀ' ),
-(N'ThoiTrangOfficial', N'Thời trang', 5000, N'ÁO THUN'),
-(N'PCOnline', N'LAPTOP', 2000, N'LAPTOP LENOVO' ),
-(N'GiaDungOnline', N'Gia Dụng', 1000, N'GHẾ GAMING ' ),
-(N'GiaDungOnline7', N'Gia Dụng', 1000, N'BÀN HỌC' ),
-(N'BooksShop', N'Sách', 1300, N'SÁCH CNTT' ),
-(N'BooksShop2', N'Sách', 100, N'SÁCH LẬP TRÌNH C/C++'),
-(N'BooksShop3', N'Sách', 1900, N'SÁCH LẬP TRÌNH' ),
-(N'Cicle K', N'Đồ ăn', 100, N'ĐỒ ĂN NHANH' ),
-(N'Bà TÁM4', N'ĐỒ ĂN', 10, N'PHỞ' ),
-(N'Mixue', N'TS', 100, N'TRÀ CHANH' ),
-(N'Mixue2', N'TS', 20, N'TRÀ SỮA' ),
-(N'Bà TÁM', N'Đồ ăn', 100, N'CƠM' ),
-(N'Bà TÁM2', N'Đồ ăn', 100, N'BÚN BÒ' ),
-(N'PHỤ KIỆN CÔNG NGHỆ', N'phụ kiện', 300, N'BÀN PHÍM CƠ'),
-(N'PHỤ KIỆN CÔNG NGHỆ0', N'phụ kiện', 3000,N'CHUỘT 2'),
-(N'GiaDungOnline4', N'Gia Dụng', 100, N'GIÁ ĐỰNG SÁCH' ),
-(N'GiaDungOnline1', N'Gia Dụng', 20,N'BÀN LÀM VIỆC'  ),
-(N'GiaDungOnline2', N'Gia Dụng', 20, N'TỦ' ),
-(N'ThoiTrangOfficial3', N'Thời trang', 310,N'DÉP'),
-(N'ThoiTrangOfficial4', N'Thời trang', 40,N'GIÀY NAM' ),
-(N'PHỤ KIỆN CÔNG NGHỆ1', N'phụ kiện', 240, N'PHÍM COR RGB' )
+('CH1',N'APPLE OFFICIAL ',N'Phone,Lap ',1000),
+('CH2',N'GIA DỤNG ',N'ĐỒ DÙNG ',2000),
+('CH3',N'FASHION ',N'QUẦN ÁO ',500),
+('CH4',N'CICLE K ',N'TIÊU DÙNG ',10000),
+('CH5',N'MIXUE ',N'KEM ',2000),
+('CH6',N'LAPTOP 24H ',N'LAPTOP ',200),
+('CH7',N'BOOKS SHOP ',N'SÁCH ',350),
+('CH8',N'RESTAURANT ',N'ĐỒ ĂN ',300),
+('CH9',N'PHỤ KIỆN ONLINE ',N'PHỤ KIỆN ',109),
+('CH10',N'TOCOTOCO ',N'NƯỚC ',100),
+('CH11',N'RESTAURANT 2 ',N'ĐỒ ĂN NHANH ',22),
+('CH12',N'TRANG SỨC ',N'VÀNG BẠC ',2100),
+('CH13',N'LYLY SHOP ',N'THỜI TRANG ',150),
+('CH14',N'SHOPPE F ',N'PHỤ KIỆN ',2222),
+('CH15',N'SHOP GIA DỤNG ',N'ĐỒ DÙNG ',328),
+('CH16',N'LAVIE OFFICIAL ',N'NƯỚC ',2322),
+('CH17',N'HOME DECOR ',N'PHỤ KIỆN ',2333),
+('CH18',N'THÚ CƯNG ',N'PHỤ KIỆN ',20),
+('CH19',N'HK PHONE ',N'ĐIỆN THOẠI ',40),
+('CH20',N'LION ',N'PIN ',50)
 
 SELECT *FROM VANCHUYEN
-insert into VANCHUYEN(DonVi,ThoiGianGD)
+insert into VANCHUYEN(MaDV,TenDV)
 values 
- ('SHOPPE', '2023-04-29'),
- ('GHTK', '2023-02-19'),
- ('NOW', '2023-05-19'),
- ('VIETTEL', '2023-04-13'),
- ('NINJA VAN', '2023-04-29'),
- ('EXPRESS', '2023-04-29'),
- ('SHOPPE 2', '2023-04-29'),
- ('SHOPPE 3', '2022-04-29'),
- ('SHOPPE 4', '2023-04-29'),
- ('SHOPPE EXPRESS', '2023-04-29'),
- ('GIAO HANG NHANH', '2023-04-29'),
- ('SHOPPE 5', '2023-04-25'),
- ('SHOPPE 6', '2023-04-19'),
- ('SHOPPE 7', '2023-04-23'),
- ('SHOPPE 9', '2023-04-24'),
- ('SHOPPE 8', '2023-03-26'),
- ('SHOPPE HUb', '2022-04-29'),
- ('SHOPPE COD9', '2021-04-27'),
- ('SHOPPE VCN', '2023-07-29'),
- ('SHOPPE HT', '2020-05-29'),
- ('SHOPPE COD1', '2023-06-29'),
- ('SHOPPE COD2', '2023-04-29'),
- ('SHOPPE COD3', '2019-09-29'),
- ('SHOPPE COD4', '2023-03-29'),
- ('SHOPPE COD', '2023-02-19')
+('VC1',N'SHOPPE '),
+('VC2',N'GIAO HÀNG NHANH '),
+('VC3',N'GIAO HÀNG TIẾT KIỆM '),
+('VC4',N'NINJA VAN '),
+('VC5',N'VIETTEL '),
+('VC6',N'EXPRESS '),
+('VC7',N'COD '),
+('VC8',N'SHOPPE FOOD '),
+('VC9',N'SHOPPE MAIL '),
+('VC10',N'VIETTEL POST '),
+('VC11',N'VNPOST '),
+('VC12',N'KERRY EXPRESS '),
+('VC13',N'SSHIP '),
+('VC14',N'HỎA TỐC '),
+('VC15',N'SHIPCHUNG '),
+('VC16',N'STANDARD '),
+('VC17',N'SIÊU TỐC '),
+('VC18',N'GRAB EXPRESS '),
+('VC19',N'J&T '),
+('VC20',N'BEST EXPRESS ')
 
 SELECT *FROM DONHANG
-insert into DONHANG(IDDonHang,NgayDatHang,TenSP,TenND,DonVi) 
+insert into DONHANG(IDDonHang,NgayDatHang,TenSP,TenND,MaDV) 
 values 
-('DH1','2023-03-12',N'IPHONE 14 PRO',N'KHOA','SHOPPE'),
- ('DH2','2023-02-15',N'QUẠT',N'THỊNH','GHTK'),
- ('DH3','2023-04-11',N'ĐIỀU HOÀ',N'KHÁNH ','NOW'),
- ('DH4','2022-03-10',N'ÁO THUN',N'LINH','VIETTEL'),
- ('DH5','2021-03-12',N'MACBOOK',N'HÙNG','NINJA VAN'),
- ('DH6','2023-04-12',N'LAPTOP LENOVO',N'HUY','EXPRESS'),
- ('DH7','2023-03-15',N'BÀN HỌC',N'LAN','NINJA VAN'),
- ('DH8','2023-03-10',N'GHẾ GAMING ',N'THAO','SHOPPE 2'),
- ('DH9','2023-01-12',N'SÁCH CNTT',N'PHƯỢNG','SHOPPE 3'),
- ('DH10','2020-03-12',N'SÁCH LẬP TRÌNH C/C++',N'MAI','SHOPPE 4'),
- ('DH11','2023-05-11',N'SÁCH LẬP TRÌNH',N'THÀNH','SHOPPE EXPRESS'),
- ('DH12','2023-03-14',N'ĐỒ ĂN NHANH',N'ĐỨC','GIAO HANG NHANH'),
- ('DH13','2023-05-12',N'PHỞ',N'LINH','SHOPPE 5'),
- ('DH14','2019-03-13',N'TRÀ CHANH',N'HOA','SHOPPE 6'),
- ('DH15','2023-03-10',N'TRÀ SỮA ',N'Elon Musk','SHOPPE 7'),
- ('DH16','2023-03-08',N'CƠM',N'MINH','SHOPPE 9'),
- ('DH17','2023-03-03',N'BÚN BÒ',N'TUẤN','SHOPPE 8'),
- ('DH18','2022-09-12',N'BÀN PHÍM CƠ',N'ANH','SHOPPE HUb') ,
- ('DH19','2023-05-12',N'CHUỘT 2',N'HÒA',N'SHOPPE COD9'),
- ('DH20','2020-03-10',N'GIÁ ĐỰNG SÁCH',N'PHÚC','SHOPPE VCN'),
- ('DH21','2023-03-20',N'BÀN LÀM VIỆC',N'LY','SHOPPE HT'),
- ('DH22','2023-03-23',N'TỦ ',N'LAN','SHOPPE COD1'),
- ('DH23','2024-03-17',N'DÉP',N'LÝ','SHOPPE COD2'),
- ('DH24','2023-05-19',N'GIÀY NAM',N'CHUNG','SHOPPE COD3'),
- ('DH25','2023-04-16',N'PHÍM COR RGB',N'Mark Zuckerberg','SHOPPE COD4')
+ ('DH1','2023-03-12',N'IPHONE 14 PRO',N'KHOA','VC19'),
+ ('DH2','2023-02-15',N'QUẠT',N'THỊNH','VC1'),
+ ('DH3','2023-04-11',N'ĐIỀU HOÀ',N'KHÁNH ','VC3'),
+ ('DH4','2022-03-10',N'ÁO THUN',N'LINH','VC2'),
+ ('DH5','2021-03-12',N'MACBOOK',N'HÙNG','VC3'),
+ ('DH6','2023-04-12',N'LAPTOP LENOVO',N'HUY','VC19'),
+ ('DH7','2023-03-15',N'BÀN HỌC',N'LAN','VC4'),
+ ('DH8','2023-03-10',N'GHẾ GAMING ',N'THAO','VC5'),
+ ('DH9','2023-01-12',N'SÁCH CNTT',N'PHƯỢNG','VC6'),
+ ('DH10','2020-03-12',N'SÁCH LẬP TRÌNH C/C++',N'MAI','VC7'),
+ ('DH11','2023-05-11',N'SÁCH LẬP TRÌNH',N'THÀNH','VC8'),
+ ('DH12','2023-03-14',N'ĐỒ ĂN NHANH',N'ĐỨC','VC20'),
+ ('DH13','2023-05-12',N'PHỞ',N'LINH','VC10'),
+ ('DH14','2019-03-13',N'TRÀ CHANH',N'HOA','VC11'),
+ ('DH15','2023-03-10',N'TRÀ SỮA ',N'Elon Musk','VC16'),
+ ('DH16','2023-03-08',N'CƠM',N'MINH','VC13'),
+ ('DH17','2023-03-03',N'BÚN BÒ',N'TUẤN','VC16'),
+ ('DH18','2022-09-12',N'BÀN PHÍM CƠ',N'ANH','VC17') ,
+ ('DH19','2023-05-12',N'CHUỘT 2',N'HÒA','VC14'),
+ ('DH20','2020-03-10',N'GIÁ ĐỰNG SÁCH',N'PHÚC','VC9'),
+ ('DH21','2023-03-20',N'BÀN LÀM VIỆC',N'LY','VC7'),
+ ('DH22','2023-03-23',N'TỦ ',N'LAN','VC20'),
+ ('DH23','2024-03-17',N'DÉP',N'LÝ','VC10'),
+ ('DH24','2023-05-19',N'GIÀY NAM',N'CHUNG','VC18'),
+ ('DH25','2023-04-16',N'PHÍM COR RGB',N'Mark Zuckerberg','VC6')
 
 SELECT *FROM NOWSHIP
-insert into NOWSHIP(MaDH,TenSP,TenCH)
+insert into NOWSHIP(MaDH,TenSP,IDCuaHang)
  values
- ('N1',N'IPHONE 14 PRO',N'Apple official'),
- ('N2',N'QUẠT',N'Apple official2'),
- ('N3',N'ĐIỀU HOÀ',N'GiaDungOnline9'),
- ('N4',N'ÁO THUN',N'GiaDungOnline6'),
- ('N5',N'MACBOOK',N'ThoiTrangOfficial'),
- ('N6',N'LAPTOP LENOVO',N'PCOnline'),
- ('N7',N'BÀN HỌC',N'GiaDungOnline'),
- ('N8',N'GHẾ GAMING ',N'GiaDungOnline7'),
- ('N9',N'SÁCH CNTT', N'BooksShop'),
- ('N10',N'SÁCH LẬP TRÌNH C/C++',N'BooksShop2'),
- ('N11',N'SÁCH LẬP TRÌNH',N'BooksShop3'),
- ('N12',N'ĐỒ ĂN NHANH',N'Cicle K'),
- ('N13',N'PHỞ',N'Bà TÁM4'),
- ('N14',N'TRÀ CHANH',N'Mixue'),
- ('N15',N'TRÀ SỮA ',N'Mixue2'),
- ('N16',N'CƠM',N'Bà TÁM'),
- ('N17',N'BÚN BÒ',N'Bà TÁM2'),
- ('N18',N'BÀN PHÍM CƠ',N'PHỤ KIỆN CÔNG NGHỆ'),
- ('N19',N'CHUỘT 2',N'PHỤ KIỆN CÔNG NGHỆ0'),
- ('N20',N'GIÁ ĐỰNG SÁCH',N'GiaDungOnline4'),
- ('N21',N'BÀN LÀM VIỆC',N'GiaDungOnline1'),
- ('N22',N'TỦ ',N'GiaDungOnline2'),
- ('N23',N'DÉP',N'ThoiTrangOfficial3'),
- ('N24',N'GIÀY NAM',N'ThoiTrangOfficial4'),
- ('N25',N'PHÍM COR RGB',N'PHỤ KIỆN CÔNG NGHỆ1')
+ ('N1',N'IPHONE 14 PRO','CH1'),
+ ('N2',N'QUẠT','CH2'),
+ ('N3',N'ĐIỀU HOÀ','CH2'),
+ ('N4',N'ÁO THUN','CH3'),
+ ('N5',N'MACBOOK','CH1'),
+ ('N6',N'LAPTOP LENOVO','CH6'),
+ ('N7',N'BÀN HỌC','CH2'),
+ ('N8',N'GHẾ GAMING ','CH17'),
+ ('N9',N'SÁCH CNTT', 'CH7'),
+ ('N10',N'SÁCH LẬP TRÌNH C/C++','CH7'),
+ ('N11',N'SÁCH LẬP TRÌNH','CH7'),
+ ('N12',N'ĐỒ ĂN NHANH','CH11'),
+ ('N13',N'PHỞ','CH8'),
+ ('N14',N'TRÀ CHANH','CH5'),
+ ('N15',N'TRÀ SỮA ','CH10'),
+ ('N16',N'CƠM','CH8'),
+ ('N17',N'BÚN BÒ','CH8'),
+ ('N18',N'BÀN PHÍM CƠ','CH14'),
+ ('N19',N'CHUỘT 2','CH14'),
+ ('N20',N'GIÁ ĐỰNG SÁCH','CH2'),
+ ('N21',N'BÀN LÀM VIỆC','CH2'),
+ ('N22',N'TỦ ','CH2'),
+ ('N23',N'DÉP','CH3'),
+ ('N24',N'GIÀY NAM','CH3'),
+ ('N25',N'PHÍM COR RGB','CH9')
 
 SELECT *FROM SHIPPER
-insert into SHIPPER(TenTX,SDTS,IDDonHang,MaDH,DonVi) 
+insert into SHIPPER(TenTX,SDTS,IDDonHang,MaDH,MaDV) 
 values
-(N'Tài Xế 1','0382362710','DH1','N1','SHOPPE'),
-(N'Tài Xế 2','0382362711','DH2','N2','GHTK'),
-(N'Tài Xế 3','0382362712','DH3','N3','NOW'),
-(N'Tài Xế 4','0382362713','DH4','N4','VIETTEL'),
-(N'Tài Xế 5','0382362714','DH5','N5','NINJA VAN'),
-(N'Tài Xế 6','0382362715','DH6','N6','EXPRESS'),
-(N'Tài Xế 7','0382362716','DH7','N7','SHOPPE 2'),
-(N'Tài Xế 8','0382362717','DH8','N8','SHOPPE 3'),
-(N'Tài Xế 9','0382362718','DH9','N9','SHOPPE 4'),
-(N'Tài Xế 10','0382362719','DH10','N10','SHOPPE EXPRESS'),
-(N'Tài Xế 11','0382362720','DH11','N11','GIAO HANG NHANH'),
-(N'Tài Xế 12','0382362721','DH12','N12','SHOPPE 5'),
-(N'Tài Xế 13','0382362722','DH13','N13','SHOPPE 6'),
-(N'Tài Xế 14','0382362723','DH14','N14','SHOPPE 7'),
-(N'Tài Xế 15','0382362724','DH15','N15','SHOPPE 9'),
-(N'Tài Xế 16','0382362725','DH16','N16','SHOPPE 8'),
-(N'Tài Xế 17','0382362726','DH17','N17','SHOPPE HUb'),
-(N'Tài Xế 18','0382362727','DH18','N18','SHOPPE COD9'),
-(N'Tài Xế 19','0382362728','DH19','N19','SHOPPE VCN'),
-(N'Tài Xế 20','0382362729','DH20','N20','SHOPPE HT'),
-(N'Tài Xế 21','0382362730','DH21','N21','SHOPPE COD1'),
-(N'Tài Xế 22','0382362731','DH22','N22','SHOPPE COD2'),
-(N'Tài Xế 23','0382362732','DH23','N23','SHOPPE COD3'),
-(N'Tài Xế 24','0382362733','DH24','N24','SHOPPE COD4'),
-(N'Tài Xế 25','0382362734','DH25','N25','SHOPPE COD')
+(N'Tài Xế 1','0382362710','DH1','N1','VC19'),
+(N'Tài Xế 2','0382362711','DH2','N2','VC1'),
+(N'Tài Xế 3','0382362712','DH3','N3','VC3'),
+(N'Tài Xế 4','0382362713','DH4','N4','VC2'),
+(N'Tài Xế 5','0382362714','DH5','N5','VC3'),
+(N'Tài Xế 6','0382362715','DH6','N6','VC19'),
+(N'Tài Xế 7','0382362716','DH7','N7','VC4'),
+(N'Tài Xế 8','0382362717','DH8','N8','VC5'),
+(N'Tài Xế 9','0382362718','DH9','N9','VC6'),
+(N'Tài Xế 10','0382362719','DH10','N10','VC7'),
+(N'Tài Xế 11','0382362720','DH11','N11','VC8'),
+(N'Tài Xế 12','0382362721','DH12','N12','VC20'),
+(N'Tài Xế 13','0382362722','DH13','N13','VC10'),
+(N'Tài Xế 14','0382362723','DH14','N14','VC11'),
+(N'Tài Xế 15','0382362724','DH15','N15','VC16'),
+(N'Tài Xế 16','0382362725','DH16','N16','VC13'),
+(N'Tài Xế 17','0382362726','DH17','N17','VC16'),
+(N'Tài Xế 18','0382362727','DH18','N18','VC17'),
+(N'Tài Xế 19','0382362728','DH19','N19','VC14'),
+(N'Tài Xế 20','0382362729','DH20','N20','VC9'),
+(N'Tài Xế 21','0382362730','DH21','N21','VC7'),
+(N'Tài Xế 22','0382362731','DH22','N22','VC20'),
+(N'Tài Xế 23','0382362732','DH23','N23','VC10'),
+(N'Tài Xế 24','0382362733','DH24','N24','VC18'),
+(N'Tài Xế 25','0382362734','DH25','N25','VC6')
  
 SELECT *FROM SUPPORT
-insert into SUPPORT(MaNV,TenNV,IDNguoiDung,TenND,TenCH,IDDonHang) 
+insert into SUPPORT(MaNV,TenNV,TenND,IDCuaHang) 
 values
-('NV1','SP1','KH01',N'KHOA',N'Apple official','DH1'), 
-('NV2','SP2','KH02',N'THỊNH',N'Apple official2','DH2'), 
-('NV3','SP3','KH03',N'KHÁNH ',N'GiaDungOnline9','DH3'), 
-('NV4','SP4','KH04',N'LINH2',N'GiaDungOnline6','DH4'), 
-('NV5','SP5','KH05',N'HÙNG',N'ThoiTrangOfficial','DH5'), 
-('NV6','SP6','KH06',N'HUY',N'PCOnline','DH6'), 
-('NV7','SP7','KH07',N'LAN',N'GiaDungOnline','DH7'), 
-('NV8','SP8','KH08',N'THAO',N'GiaDungOnline7','DH8'), 
-('NV9','SP9','KH09',N'PHƯỢNG',N'BooksShop','DH9'), 
-('NV10','SP10','KH10',N'MAI',N'BooksShop2','DH10'), 
-('NV11','SP11','KH11',N'THÀNH',N'BooksShop3','DH11'),
-('NV12','SP12','KH12',N'ĐỨC',N'Cicle K','DH12'), 
-('NV13','SP13','KH13',N'LINH',N'Bà TÁM4','DH13'), 
-('NV14','SP14','KH14',N'HOA',N'Mixue','DH14'), 
-('NV15','SP15','KH15',N'Elon Musk',N'Mixue2','DH15'), 
-('NV16','SP16','KH16',N'MINH',N'Bà TÁM','DH16'), 
-('NV17','SP17','KH17',N'TUẤN',N'Bà TÁM2','DH17'), 
-('NV18','SP18','KH18',N'ANH',N'PHỤ KIỆN CÔNG NGHỆ','DH18'), 
-('NV19','SP19','KH19',N'HÒA',N'PHỤ KIỆN CÔNG NGHỆ0','DH19'), 
-('NV20','SP20','KH20',N'PHÚC',N'GiaDungOnline4','DH20'), 
-('NV21','SP21','KH21',N'LY',N'GiaDungOnline1','DH21'), 
-('NV22','SP22','KH22',N'LAN2',N'GiaDungOnline2','DH22'), 
-('NV23','SP23','KH23',N'LÝ',N'ThoiTrangOfficial3','DH23'), 
-('NV24','SP24','KH24',N'CHUNG',N'ThoiTrangOfficial4','DH24'), 
-('NV25','SP25','KH25',N'Mark Zuckerberg',N'PHỤ KIỆN CÔNG NGHỆ1','DH25')
+('NV1',N'NAM',N'KHOA','CH1'), 
+('NV2',N'HÙNG',N'THỊNH','CH2'), 
+('NV3',N'MINH',N'KHÁNH ','CH2'), 
+('NV4',N'PHONG',N'LINH2','CH3'), 
+('NV5',N'HUỆ',N'HÙNG','CH1'), 
+('NV6',N'LY',N'HUY','CH6'), 
+('NV7',N'LINH',N'LAN','CH2'), 
+('NV8',N'HUYỀN',N'THAO','CH17'), 
+('NV9',N'TRANG',N'PHƯỢNG','CH7'), 
+('NV10',N'PHÚC',N'MAI','CH7'), 
+('NV11',N'KHÁNH',N'THÀNH','CH7'),
+('NV12',N'THỊNH',N'ĐỨC','CH11'), 
+('NV13',N'HẢI',N'LINH','CH8'), 
+('NV14',N'HUY',N'HOA','CH5'), 
+('NV15',N'GIANG',N'Elon Musk','CH10'), 
+('NV16',N'ĐỨC',N'MINH','CH8'), 
+('NV17',N'PHƯỢNG',N'TUẤN','CH8'), 
+('NV18',N'PHƯƠNG',N'ANH','CH14'), 
+('NV19',N'TÙNG',N'HÒA','CH14'), 
+('NV20',N'ANH',N'PHÚC','CH2'), 
+('NV21',N'HUY2',N'LY','CH2'), 
+('NV22',N'HUYỀN',N'LAN2','CH2'), 
+('NV23',N'LONG',N'LÝ','CH3'), 
+('NV24',N'BÌNH',N'CHUNG','CH3'), 
+('NV25',N'TRANG',N'Mark Zuckerberg','CH9')
 
 
 
 
 ---------------CREATE VIEW------------------
 
---------------LẤY TOÀN BỘ THÔNG TIN TRONG DATABASE------------
-CREATE VIEW ALLDATABASE2 AS
+--------------1 LẤY TOÀN BỘ THÔNG TIN TRONG DATABASE------------
+
+CREATE VIEW ALLDATABASE AS
 SELECT THONGTIN_ND.*,
        NGUOIDUNG.TaiKhoan AS 'TÀI KHOẢN',
        NGUOIDUNG.MatKhau AS 'MẬT KHẨU',
@@ -357,50 +347,25 @@ SELECT THONGTIN_ND.*,
        SHIPPER.SDTS AS 'SỐ ĐIỆN THOẠI',
        SUPPORT.MaNV AS 'MÃ NHÂN VIÊN',
        SUPPORT.TenNV AS 'TÊN NHÂN VIÊN'
-FROM THONGTIN_ND , NGUOIDUNG, GIOHANG, CUAHANG, DONHANG, VANCHUYEN, NOWSHIP,SHIPPER,SUPPORT
-WHERE 
-    THONGTIN_ND.IDNguoiDung = NGUOIDUNG.IDNguoiDung 
-AND GIOHANG.TenSP = CUAHANG.TenSP
-AND DONHANG.TenSP = GIOHANG.TenSP
+FROM THONGTIN_ND,NGUOIDUNG,GIOHANG,CUAHANG,DONHANG,VANCHUYEN,NOWSHIP,SHIPPER,SUPPORT
+WHERE THONGTIN_ND.IDNguoiDung = NGUOIDUNG.IDNguoiDung
+AND GIOHANG.IDCuaHang = CUAHANG.IDCuaHang
+AND CUAHANG.IDCuaHang = GIOHANG.IDCuaHang
+AND DONHANG.TenSP = GIOHANG.TenSP 
 AND DONHANG.TenND = THONGTIN_ND.TenND
-AND DONHANG.DonVi = VANCHUYEN.DonVi
-AND NOWSHIP.TenSP = GIOHANG.TenSP
-AND NOWSHIP.TenCH = CUAHANG.TenCH
-AND SHIPPER.IDDonHang = DONHANG.IDDonHang
-AND SHIPPER.MaDH = NOWSHIP.MaDH
-AND SHIPPER.DonVi = VANCHUYEN.DonVi
-AND SUPPORT.IDNguoiDung = NGUOIDUNG.IDNguoiDung
-AND SUPPORT.TenND = THONGTIN_ND.TenND
-AND SUPPORT.TenCH = CUAHANG.TenCH
-AND SUPPORT.IDDonHang = DONHANG.IDDonHang
+AND DONHANG.MaDV = VANCHUYEN.MaDV
+AND NOWSHIP.TenSP = GIOHANG.TenSP 
+AND NOWSHIP.IDCuaHang = CUAHANG.IDCuaHang
+AND SHIPPER.IDDonHang = DONHANG.IDDonHang 
+AND SHIPPER.MaDH = NOWSHIP.MaDH 
+AND SHIPPER.MaDV = VANCHUYEN.MaDV
+AND SUPPORT.TenND = THONGTIN_ND.TenND 
+AND SUPPORT.IDCuaHang = CUAHANG.IDCuaHang
+
+SELECT *FROM ALLDATABASE
 
 
-SELECT *FROM ALLDATABASE2
-
-CREATE VIEW View_AllData AS
-SELECT ND.IDNguoiDung, ND.TaiKhoan, ND.MatKhau,
-       GH.TenSP, GH.SoLuong, GH.Gia, GH.PhuongThucThanhToan,
-       TT.TenND, TT.NgaySinh, TT.DiaChi, TT.Email, TT.SDT,
-       CH.PhanLoai, CH.SoLuongCon,
-       VC.ThoiGianGD,
-       DH.NgayDatHang,
-       NS.TenCH,
-       SH.TenTX, SH.SDTS
-FROM NGUOIDUNG ND
-JOIN THONGTIN_ND TT ON ND.IDNguoiDung = TT.IDNguoiDung
-JOIN GIOHANG GH ON GH.TenSP = ND.IDNguoiDung
-JOIN CUAHANG CH ON CH.TenSP = GH.TenSP
-JOIN VANCHUYEN VC ON VC.DonVi = ND.IDNguoiDung -- Thay DH.DonVi thành ND.IDNguoiDung
-JOIN DONHANG DH ON DH.TenSP = GH.TenSP AND DH.TenND = TT.TenND
-JOIN NOWSHIP NS ON NS.MaDH = DH.IDDonHang
-JOIN SHIPPER SH ON SH.IDDonHang = DH.IDDonHang
-JOIN SUPPORT SP ON SP.IDNguoiDung = ND.IDNguoiDung AND SP.TenND = TT.TenND AND SP.TenCH = CH.TenCH AND SP.IDDonHang = DH.IDDonHang;
-
-select *from View_AllData
-
-
-
-------------Lấy thông tin khách hàng-----------
+------------2 Lấy thông tin khách hàng-----------
 CREATE VIEW ToanBoKhachhang AS 
 SELECT NGUOIDUNG.*,
  THONGTIN_ND.TenND,
@@ -413,14 +378,11 @@ FROM NGUOIDUNG
 INNER JOIN THONGTIN_ND ON NGUOIDUNG.IDNguoiDung = THONGTIN_ND.IDNguoiDung
 
 
-
-
-
 SELECT * FROM ToanBoKhachhang
 
 
 
-------------Lấy thông tin khách hàng có địa chỉ cổ nhuế 2 ---------------
+------------3 Lấy thông tin khách hàng có địa chỉ cổ nhuế 2 ---------------
 
 CREATE VIEW LHKHACHHANG AS
 SELECT THONGTIN_ND.TenND,
@@ -432,18 +394,18 @@ WHERE THONGTIN_ND.DiaChi = N'Cổ Nhuế 2'
 SELECT *FROM LHKHACHHANG
 
 
-------------IN TT Đơn Hàng Năm 2022----------
+------------4 IN TT Đơn Hàng Năm 2022----------
 CREATE VIEW CHITIETDON AS
 SELECT DONHANG.*,
        THONGTIN_ND.SDT,
        THONGTIN_ND.DiaChi
 FROM DONHANG
 INNER JOIN THONGTIN_ND ON DONHANG.TenND = THONGTIN_ND.TenND
-WHERE YEAR(NgayDatHang) = 2022;
+WHERE YEAR(NgayDatHang) = 2022
 
 SELECT *FROM CHITIETDON
 
-------------Top 5 đơn có giá cao nhất---------------
+------------5 Top 5 đơn có giá cao nhất---------------
 CREATE VIEW DONCOGIACAO AS
 SELECT TOP 5 
 GIOHANG.TenSP AS 'TÊN SẢN PHẨM',
@@ -452,6 +414,15 @@ FROM GIOHANG
 ORDER BY GIOHANG.GIA DESC
 
 SELECT *FROM DONCOGIACAO
+
+-----------6 in ra đơn hoả tốc---------------------
+CREATE VIEW INDON AS
+SELECT DONHANG.*,
+       VANCHUYEN.TenDV
+FROM DONHANG INNER JOIN VANCHUYEN on VANCHUYEN.MaDV = DONHANG.MaDV
+WHERE VANCHUYEN.MaDV = 'VC14'
+
+SELECT *FROM INDON
 
 ------------- FUNTION(1) ----------------
 ------nhập tên sản phẩm cho biết giá-----------
@@ -463,12 +434,12 @@ BEGIN
   where TenSP = @TEN
   )
 END
-print dbo.GIA(N'IPHONE 14 PRO')
+print dbo.GIA(N'QUẠT')
 
 ------đếm hóa đơn năm 2023-------
 
 CREATE FUNCTION DEMSL(@nam int)
-RETURN int 
+RETURNS int 
 as
 BEGIN
      DECLARE @count int = 0
@@ -480,8 +451,8 @@ BEGIN
 SELECT dbo.DEMSL(2023) as 'SoLuongDonHangNam2023'
 
 -------tổng giá trị đơn hàng--------
-AFTER FUNCTION GIATRI(@tensp nvarchar(40))
-RETURNS int
+CREATE FUNCTION GIATRI(@tensp nvarchar(40))
+RETURNS FLOAT
 AS 
 BEGIN 
     DECLARE @giatri int;
@@ -495,25 +466,23 @@ END
 
 PRINT dbo.GIATRI(N'QUẠT')
 
-------------------tìm của hàng kho có số lượng >= 1000---------------
-creare FUNCTION TIMKIEMSL3()
+------------------tìm của hàng kho có số lượng = 1000---------------
+CREATE FUNCTION TIMKIEMSL()
 RETURNS NVARCHAR(30)
 AS 
 BEGIN 
     DECLARE @TenCH NVARCHAR(40);
 
-    SELECT top 5 @TenCH = TenCH
+    SELECT @TenCH = TenCH
     FROM CUAHANG
-    WHERE SoLuongCon >= 1000;
+    WHERE SoLuongCon = 1000;
 
     RETURN @TenCH;
-END;
+END
 
 SELECT *
 FROM CUAHANG
-WHERE TenCH = dbo.TIMKIEMSL();
-
-SELECT dbo.TIMKIEMSL() AS 'TÊN CỬA HÀNG' from CUAHANG
+WHERE TenCH = dbo.TIMKIEMSL()
 
 
 
@@ -527,7 +496,22 @@ RETURN (
     SELECT TaiKhoan, MatKhau
     FROM NGUOIDUNG
     WHERE IDNguoiDung = @ID
-);
+)
 
 SELECT *
 FROM dbo.ThongTinDN1('KH01')
+-------------Lấy thông tin của hàng chưa có đơn hàng---------------
+
+CREATE FUNCTION dbo.CHECKTT()
+RETURNS TABLE
+AS 
+RETURN 
+    SELECT CUAHANG.*, GIOHANG.TenSP
+    FROM CUAHANG 
+    LEFT JOIN GIOHANG ON CUAHANG.IDCuaHang = GIOHANG.IDCuaHang
+    WHERE GIOHANG.IDCuaHang IS NULL
+
+SELECT * FROM dbo.CHECKTT()
+
+------------FUNTION 3-----------------
+------------lấy ra thông tin đơn hàng qua ID -----------------
