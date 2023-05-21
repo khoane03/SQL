@@ -597,7 +597,8 @@ select *from THONGTIN_ND
 --------- 1 Trigger để cập nhật số lượng sản phẩm trong bảng CUAHANG sau khi thêm mới dữ liệu vào bảng GIOHANG--------
 CREATE TRIGGER UpdateSoLuongCon
 ON GIOHANG
-AFTER INSERT
+for INSERT, UPDATE
+
 AS
 BEGIN
     UPDATE CUAHANG
@@ -606,9 +607,65 @@ BEGIN
 END
 
 UPDATE GIOHANG
-SET SoLuong = 5
+SET SoLuong = 55
 WHERE TenSP = 'MACBOOK'
-
 select *from GIOHANG
+select *from CUAHANG
 
--------
+-------Số lượng còn của hàng không được âm -----------------------
+CREATE TRIGGER CheckSoLuongCon
+ON CUAHANG
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    IF EXISTS (SELECT * FROM inserted WHERE SoLuongCon < 0)
+    BEGIN
+        RAISERROR('Giá trị của SoLuongCon phải là số không âm.', 16, 1)
+        ROLLBACK TRANSACTION
+        RETURN
+    END
+END
+
+UPDATE CUAHANG
+SET SoLuongCon = -1
+WHERE IDCuaHang = 'CH1'
+----------------Trigger thêm người dùng và kiểm tra người dùng mới thêm không được trùng trong bảng---------------------
+CREATE TRIGGER ADDND
+ON NGUOIDUNG
+AFTER INSERT
+AS
+BEGIN
+    IF EXISTS (
+        SELECT TaiKhoan, COUNT(*) as Count
+        FROM NGUOIDUNG
+        GROUP BY TaiKhoan
+        HAVING COUNT(*) > 1
+    )
+    BEGIN
+        RAISERROR ('Dữ liệu đã có trong bảng in NGUOIDUNG .', 16, 1)
+        ROLLBACK TRANSACTION
+    END
+END
+
+INSERT INTO NGUOIDUNG (IDNguoiDung, TaiKhoan, MatKhau)
+VALUES ('KH1', 'KHOASHOPPE', 'khoa')
+--------------------Trigger để kiểm tra việc xóa người dùng trong bảng "NGUOIDUNG" để đảm bảo không có xóa người dùng đang có đơn hàng----------------
+CREATE TRIGGER Check_XoaNguoiDung
+ON NGUOIDUNG
+AFTER DELETE
+AS
+BEGIN
+    IF EXISTS (
+        SELECT *
+        FROM NGUOIDUNG
+        INNER JOIN THONGTIN_ND ON NGUOIDUNG.IDNguoiDung = THONGTIN_ND.IDNguoiDung
+        INNER JOIN DONHANG ON THONGTIN_ND.TenND = DONHANG.TenND
+    )
+    BEGIN
+        RAISERROR ('Không thể xóa người dùng có đơn đặt hàng được liên kết.', 16, 1)
+        ROLLBACK TRANSACTION
+    END
+END
+
+DELETE FROM NGUOIDUNG
+WHERE IDNguoiDung = 'KH1'
