@@ -514,4 +514,232 @@ RETURN
 SELECT * FROM dbo.CHECKTT()
 
 ------------FUNTION 3-----------------
-------------lấy ra thông tin đơn hàng qua ID -----------------
+------------lấy ra thông tin đơn hàng qua tên người dùng -----------------
+
+CREATE FUNCTION THONGTINDONHANG (@Ten NVARCHAR(20))
+RETURNS @Orders TABLE (
+    IDDonHang VARCHAR(30),
+    NgayDatHang DATE,
+    TenSP NVARCHAR(40),
+    TenND NVARCHAR(20),
+    MaDV VARCHAR(30)
+)
+AS
+BEGIN
+    INSERT INTO @Orders (IDDonHang, NgayDatHang, TenSP, TenND, MaDV)
+    SELECT d.IDDonHang, d.NgayDatHang, g.TenSP, t.TenND, v.MaDV
+    FROM DONHANG d
+    INNER JOIN GIOHANG g ON d.TenSP = g.TenSP
+    INNER JOIN THONGTIN_ND t ON d.TenND = t.TenND
+    INNER JOIN VANCHUYEN v ON d.MaDV = v.MaDV
+    WHERE t.TenND = @Ten
+    RETURN
+END
+
+SELECT *from dbo.THONGTINDONHANG(N'KHOA')
+
+
+-------------PROCEDURE-----------
+----------Thủ tục để lấy danh sách đơn hàng dựa trên tên người dùng------------
+CREATE PROCEDURE DANHSACHDONHANG
+    @TenND NVARCHAR(20)
+AS
+BEGIN
+    SELECT *
+    FROM DONHANG
+    WHERE TenND = @TenND
+END
+
+EXEC DANHSACHDONHANG @TenND = 'KHOA'
+
+-----------Thủ tục để lấy thông tin người dùng dựa trên ID người dùng--------------
+CREATE PROCEDURE LAYTT
+    @IDNguoiDung VARCHAR(30)
+AS
+BEGIN
+    SELECT *
+    FROM THONGTIN_ND
+    WHERE IDNguoiDung = @IDNguoiDung
+END
+
+EXEC LAYTT @IDNguoiDung = 'KH09'
+
+-----------Thủ tục để thêm một sản phẩm vào giỏ hàng--------------
+CREATE PROCEDURE THEMSP
+    @TenSP NVARCHAR(40),
+    @SoLuong INT,
+    @Gia FLOAT,
+    @PhuongThucThanhToan NVARCHAR(40),
+    @IDCuaHang VARCHAR(10)
+AS
+BEGIN
+    INSERT INTO GIOHANG (TenSP, SoLuong, Gia, PhuongThucThanhToan, IDCuaHang)
+    VALUES (@TenSP, @SoLuong, @Gia, @PhuongThucThanhToan, @IDCuaHang)
+END
+
+EXEC THEMSP @TenSP = 'MÁY IN', @SoLuong = 3, @Gia =120000000, @PhuongThucThanhToan = 'ATM', @IDCuaHang = 'CH3'
+select *from GIOHANG
+
+
+---------Thủ tục để đặt hàng-------------
+CREATE PROCEDURE DATHANG
+    @IDDonHang VARCHAR(30),
+    @NgayDatHang DATE,
+    @TenSP NVARCHAR(40),
+    @TenND NVARCHAR(20),
+    @MaDV VARCHAR(30)
+AS
+BEGIN
+    INSERT INTO DONHANG (IDDonHang, NgayDatHang, TenSP, TenND, MaDV)
+    VALUES (@IDDonHang, @NgayDatHang, @TenSP, @TenND, @MaDV)
+END
+
+EXEC DATHANG @IDDonHang = 'DH1', @NgayDatHang = '2022-03-12', @TenSP = 'IPHONE ', @TenND = 'KHOA2', @MaDV = 'VC1'
+
+-------------Thủ tục để cập nhật thông tin người dùng dựa trên tên người dùng-------------
+
+CREATE PROCEDURE UpdateTT
+    @TenND NVARCHAR(20),
+    @NgaySinh DATE,
+    @DiaChi NVARCHAR(50),
+    @Email VARCHAR(50),
+    @SDT VARCHAR(10)
+AS
+BEGIN
+    UPDATE THONGTIN_ND
+    SET NgaySinh = @NgaySinh, DiaChi = @DiaChi, Email = @Email, SDT = @SDT
+    WHERE TenND = @TenND
+END
+
+
+EXEC UpdateTT @TenND = 'KHOA', @NgaySinh = '2003-01-01', @DiaChi = N'HÀ NỘI', @Email = 'khoa003@gmai.com', @SDT = '0972456789'
+select *from THONGTIN_ND
+
+
+------------------TRIGGER------------------
+
+---------Trigger để xóa thông tin đơn hàng trong bảng NOWSHIP khi xóa dữ liệu tương ứng trong bảng DONHANG-------
+CREATE TRIGGER DeleteNowShip
+ON DONHANG
+AFTER DELETE
+AS
+BEGIN
+    DELETE FROM NOWSHIP
+    WHERE MaDH IN (SELECT MaDH FROM deleted)
+END
+
+DELETE FROM DONHANG
+WHERE IDDonHang = 'DH11'
+select *from NOWSHIP
+select *from CUAHANG 
+
+-------------KT THÔNG TIN ND--------------------
+
+CREATE TRIGGER CheckNgDung
+ON NGUOIDUNG
+AFTER INSERT
+AS
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM inserted
+        WHERE LEN(TaiKhoan) > 40 OR LEN(MatKhau) > 30
+    )
+    BEGIN
+        RAISERROR ('TaiKhoan hoac MatKhau khong hop le!', 16, 1)
+        ROLLBACK TRANSACTION
+    END
+END
+
+INSERT INTO NGUOIDUNG (IDNguoiDung, TaiKhoan, MatKhau)
+VALUES ('1', 'user1', 'pass1')
+
+INSERT INTO NGUOIDUNG (IDNguoiDung, TaiKhoan, MatKhau)
+VALUES ('2', 'jsjahduefysuffffffffffffffffffffffffffffffffffff', 'pass2')
+select *from NGUOIDUNG
+
+
+---------Trigger để cập nhật số lượng sản phẩm trong bảng CUAHANG sau khi thêm mới dữ liệu vào bảng GIOHANG--------
+CREATE TRIGGER UpdateSoLuongCon
+ON GIOHANG
+AFTER INSERT
+AS
+BEGIN
+    UPDATE CUAHANG
+    SET SoLuongCon = SoLuongCon - (SELECT SoLuong FROM inserted)
+    WHERE IDCuaHang = (SELECT IDCuaHang FROM inserted)
+END
+
+UPDATE GIOHANG
+SET SoLuong = 5
+WHERE TenSP = 'MACBOOK'
+
+select *from GIOHANG
+
+----------Trigger để kiểm tra ngày đặt hàng trong bảng DONHANG và chặn việc đặt hàng vào ngày nghỉ-----------
+CREATE TRIGGER CheckNgayDatHang
+ON DONHANG
+INSTEAD OF INSERT
+AS
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM inserted
+        WHERE DATEPART(dw, NgayDatHang) IN (1, 7) -- 1: Chủ nhật, 7: Thứ 7
+    )
+    BEGIN
+        RAISERROR ('Khong the dat hang vao ngay nghi!', 16, 1)
+        ROLLBACK TRANSACTION
+    END
+    ELSE
+    BEGIN
+        INSERT INTO DONHANG (IDDonHang, NgayDatHang, TenSP, TenND, MaDV)
+        SELECT IDDonHang, NgayDatHang, TenSP, TenND, MaDV
+        FROM inserted
+    END
+END
+
+UPDATE DONHANG
+SET NgayDatHang = '2023-05-16'
+WHERE IDDonHang = 'DH4'
+select *from DONHANG
+
+--------Trigger: Tự động tạo mã số đơn hàng khi có thêm dữ liệu vào bảng DONHANG----------
+CREATE TRIGGER AutoGenerateIDDonHang
+ON DONHANG
+AFTER INSERT
+AS
+BEGIN
+    -- Tạo mã số đơn hàng tự động
+    DECLARE @NewIDDonHang VARCHAR(30)
+    SELECT @NewIDDonHang = 'DH' + CAST(IDENT_CURRENT('DONHANG') AS VARCHAR(10))
+    FROM DONHANG
+    WHERE IDDonHang = (SELECT IDDonHang FROM inserted)
+
+    -- Cập nhật mã số đơn hàng vào bảng DONHANG
+    UPDATE DONHANG
+    SET IDDonHang = @NewIDDonHang
+    WHERE IDDonHang = (SELECT IDDonHang FROM inserted)
+END
+
+-- Gọi trigger sau khi thêm dữ liệu vào bảng DONHANG
+INSERT INTO DONHANG (NgayDatHang, TenSP, TenND, MaDV)
+VALUES (GETDATE(), 'SP1', 'User2', 'DV1')
+
+
+---------Trigger: Giảm số lượng sản phẩm khi có đơn hàng mới trong bảng GIOHANG---------
+CREATE TRIGGER GIAMSL
+ON GIOHANG
+AFTER INSERT
+AS
+BEGIN
+    -- Giảm số lượng sản phẩm trong bảng GIOHANG khi có đơn hàng mới
+    UPDATE GIOHANG
+    SET SoLuong = SoLuong - (SELECT SoLuong FROM inserted)
+    WHERE TenSP = (SELECT TenSP FROM inserted)
+END
+-- Gọi trigger sau khi thêm dữ liệu vào bảng GIOHANG
+INSERT INTO GIOHANG (TenSP, SoLuong, Gia, PhuongThucThanhToan, IDCuaHang)
+VALUES ('MACBOOK', 2, 52000000, 'ATM', 'CH1')
+
+select *from GIOHANG
