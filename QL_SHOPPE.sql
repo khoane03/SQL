@@ -71,7 +71,7 @@ CREATE TABLE SUPPORT (
 
 
 ----------------------Add Data-------------------------------
-select * from NGUOIDUNG
+
 insert into NGUOIDUNG(IDNguoiDung,TaiKhoan,MatKhau)
  values
 ('KH01', 'KHOASHOPPE', 'Khoane'),
@@ -100,36 +100,6 @@ insert into NGUOIDUNG(IDNguoiDung,TaiKhoan,MatKhau)
 ('KH24', 'HIENLE', 'TE1234'),
 ('KH25', 'LEHUY', 'HUY21#')
 
-select *from GIOHANG 
-insert into  GIOHANG(TenSP,SoLuong,Gia,PhuongThucThanhToan,IDCuaHang)
- values 
- (N'IPHONE 14 PRO', 1, 32000000,N'ATM','CH1'),
- (N'QUẠT', 3, 200000,N'TIỀN MẶT','CH2'),
- (N'ĐIỀU HOÀ', 1, 4000000,N'ATM','CH2'),
- (N'ÁO THUN', 4, 500000,N'ATM','CH3'),
- (N'MACBOOK', 1, 52000000,N'ATM','CH1'),
- (N'LAPTOP LENOVO', 1, 18000000,N'TIỀN MẶT','CH6'),
- (N'BÀN HỌC', 1, 150000,N'TIỀN MẶT','CH2'),
- (N'GHẾ GAMING ', 1, 2000000,N'ATM','CH17'),
- (N'SÁCH CNTT', 5, 250000,N'TIỀN MẶT','CH7'),
- (N'SÁCH LẬP TRÌNH C/C++', 4, 100000,N'ATM','CH7'),
- (N'SÁCH LẬP TRÌNH', 1, 32000000,N'ATM','CH7'),
- (N'ĐỒ ĂN NHANH', 1, 25500,N'ATM','CH11'),
- (N'PHỞ', 2, 40000,N'TIỀN MẶT','CH8'),
- (N'TRÀ CHANH', 1, 15000,N'ATM','CH5'),
- (N'TRÀ SỮA ', 4, 20000,N'ATM','CH10'),
- (N'CƠM', 1, 15000,N'TIỀN MẶT','CH8'),
- (N'BÚN BÒ', 1, 500000,N'ATM','CH8'),
- (N'BÀN PHÍM CƠ', 1, 2000000,N'ATM','CH14'),
- (N'CHUỘT 2', 1, 1000000,N'ATM','CH14'),
- (N'GIÁ ĐỰNG SÁCH', 1, 150000,N'TIỀN MẶT','CH2'),
- (N'BÀN LÀM VIỆC', 1, 2000000,N'ATM','CH2'),
- (N'TỦ ', 1, 3000000,N'ATM','CH2'),
- (N'DÉP', 2, 100000,N'ATM','CH3'),
- (N'GIÀY NAM', 1, 2000000,N'ATM','CH3'),
- (N'PHÍM COR RGB', 1, 32000000,N'ATM','CH9')
-
-SELECT *FROM THONGTIN_ND
 insert into  THONGTIN_ND(TenND,NgaySinh,DiaChi,Email,SDT,IDNguoiDung) 
 values 
  (N'KHOA','2003-02-10',N'CỔ NHUẾ 2','khoatk4444@gmail.com', '0987527888','KH01'),
@@ -158,9 +128,6 @@ values
  (N'CHUNG','1996-02-10',N'CỔ NHUẾ 2','chung219@gmail.com', '0980827888','KH24'),
  (N'Mark Zuckerberg','1971-06-28',N'US ','meta444@gmail.com', '0337527088','KH25')
 
-
-
-SELECT *FROM CUAHANG
 insert into CUAHANG(IDCuaHang,TenCH,PhanLoai,SoLuongCon)
 values 
 ('CH1',N'APPLE OFFICIAL ',N'Phone,Lap ',1000),
@@ -184,7 +151,35 @@ values
 ('CH19',N'HK PHONE ',N'ĐIỆN THOẠI ',40),
 ('CH20',N'LION ',N'PIN ',50)
 
-SELECT *FROM VANCHUYEN
+
+insert into  GIOHANG(TenSP,SoLuong,Gia,PhuongThucThanhToan,IDCuaHang)
+ values 
+ (N'IPHONE 14 PRO', 1, 32000000,N'ATM','CH1'),
+ (N'QUẠT', 3, 200000,N'TIỀN MẶT','CH2'),
+ (N'ĐIỀU HOÀ', 1, 4000000,N'ATM','CH2'),
+ (N'ÁO THUN', 4, 500000,N'ATM','CH3'),
+ (N'MACBOOK', 1, 52000000,N'ATM','CH1'),
+ (N'LAPTOP LENOVO', 1, 18000000,N'TIỀN MẶT','CH6'),
+ (N'BÀN HỌC', 1, 150000,N'TIỀN MẶT','CH2'),
+ (N'GHẾ GAMING ', 1, 2000000,N'ATM','CH17'),
+ (N'SÁCH CNTT', 5, 250000,N'TIỀN MẶT','CH7'),
+ (N'SÁCH LẬP TRÌNH C/C++', 4, 100000,N'ATM','CH7'),
+ (N'SÁCH LẬP TRÌNH', 1, 32000000,N'ATM','CH7'),
+ (N'ĐỒ ĂN NHANH', 1, 25500,N'ATM','CH11'),
+ (N'PHỞ', 2, 40000,N'TIỀN MẶT','CH8'),
+ (N'TRÀ CHANH', 1, 15000,N'ATM','CH5'),
+ (N'TRÀ SỮA ', 4, 20000,N'ATM','CH10'),
+ (N'CƠM', 1, 15000,N'TIỀN MẶT','CH8'),
+ (N'BÚN BÒ', 1, 500000,N'ATM','CH8'),
+ (N'BÀN PHÍM CƠ', 1, 2000000,N'ATM','CH14'),
+ (N'CHUỘT 2', 1, 1000000,N'ATM','CH14'),
+ (N'GIÁ ĐỰNG SÁCH', 1, 150000,N'TIỀN MẶT','CH2'),
+ (N'BÀN LÀM VIỆC', 1, 2000000,N'ATM','CH2'),
+ (N'TỦ ', 1, 3000000,N'ATM','CH2'),
+ (N'DÉP', 2, 100000,N'ATM','CH3'),
+ (N'GIÀY NAM', 1, 2000000,N'ATM','CH3'),
+ (N'PHÍM COR RGB', 1, 32000000,N'ATM','CH9')
+
 insert into VANCHUYEN(MaDV,TenDV)
 values 
 ('VC1',N'SHOPPE '),
@@ -208,7 +203,7 @@ values
 ('VC19',N'J&T '),
 ('VC20',N'BEST EXPRESS ')
 
-SELECT *FROM DONHANG
+
 insert into DONHANG(IDDonHang,NgayDatHang,TenSP,TenND,MaDV) 
 values 
  ('DH1','2023-03-12',N'IPHONE 14 PRO',N'KHOA','VC19'),
@@ -237,7 +232,7 @@ values
  ('DH24','2023-05-19',N'GIÀY NAM',N'CHUNG','VC18'),
  ('DH25','2023-04-16',N'PHÍM COR RGB',N'Mark Zuckerberg','VC6')
 
-SELECT *FROM NOWSHIP
+
 insert into NOWSHIP(MaDH,TenSP,IDCuaHang)
  values
  ('N1',N'IPHONE 14 PRO','CH1'),
@@ -266,7 +261,6 @@ insert into NOWSHIP(MaDH,TenSP,IDCuaHang)
  ('N24',N'GIÀY NAM','CH3'),
  ('N25',N'PHÍM COR RGB','CH9')
 
-SELECT *FROM SHIPPER
 insert into SHIPPER(TenTX,SDTS,IDDonHang,MaDH,MaDV) 
 values
 (N'Tài Xế 1','0382362710','DH1','N1','VC19'),
@@ -295,7 +289,6 @@ values
 (N'Tài Xế 24','0382362733','DH24','N24','VC18'),
 (N'Tài Xế 25','0382362734','DH25','N25','VC6')
  
-SELECT *FROM SUPPORT
 insert into SUPPORT(MaNV,TenNV,TenND,IDCuaHang) 
 values
 ('NV1',N'NAM',N'KHOA','CH1'), 
@@ -580,22 +573,6 @@ END
 EXEC THEMSP @TenSP = 'MÁY IN', @SoLuong = 3, @Gia =120000000, @PhuongThucThanhToan = 'ATM', @IDCuaHang = 'CH3'
 select *from GIOHANG
 
-
----------Thủ tục để đặt hàng-------------
-CREATE PROCEDURE DATHANG
-    @IDDonHang VARCHAR(30),
-    @NgayDatHang DATE,
-    @TenSP NVARCHAR(40),
-    @TenND NVARCHAR(20),
-    @MaDV VARCHAR(30)
-AS
-BEGIN
-    INSERT INTO DONHANG (IDDonHang, NgayDatHang, TenSP, TenND, MaDV)
-    VALUES (@IDDonHang, @NgayDatHang, @TenSP, @TenND, @MaDV)
-END
-
-EXEC DATHANG @IDDonHang = 'DH1', @NgayDatHang = '2022-03-12', @TenSP = 'IPHONE ', @TenND = 'KHOA2', @MaDV = 'VC1'
-
 -------------Thủ tục để cập nhật thông tin người dùng dựa trên tên người dùng-------------
 
 CREATE PROCEDURE UpdateTT
@@ -617,49 +594,7 @@ select *from THONGTIN_ND
 
 
 ------------------TRIGGER------------------
-
----------Trigger để xóa thông tin đơn hàng trong bảng NOWSHIP khi xóa dữ liệu tương ứng trong bảng DONHANG-------
-CREATE TRIGGER DeleteNowShip
-ON DONHANG
-AFTER DELETE
-AS
-BEGIN
-    DELETE FROM NOWSHIP
-    WHERE MaDH IN (SELECT MaDH FROM deleted)
-END
-
-DELETE FROM DONHANG
-WHERE IDDonHang = 'DH11'
-select *from NOWSHIP
-select *from CUAHANG 
-
--------------KT THÔNG TIN ND--------------------
-
-CREATE TRIGGER CheckNgDung
-ON NGUOIDUNG
-AFTER INSERT
-AS
-BEGIN
-    IF EXISTS (
-        SELECT 1
-        FROM inserted
-        WHERE LEN(TaiKhoan) > 40 OR LEN(MatKhau) > 30
-    )
-    BEGIN
-        RAISERROR ('TaiKhoan hoac MatKhau khong hop le!', 16, 1)
-        ROLLBACK TRANSACTION
-    END
-END
-
-INSERT INTO NGUOIDUNG (IDNguoiDung, TaiKhoan, MatKhau)
-VALUES ('1', 'user1', 'pass1')
-
-INSERT INTO NGUOIDUNG (IDNguoiDung, TaiKhoan, MatKhau)
-VALUES ('2', 'jsjahduefysuffffffffffffffffffffffffffffffffffff', 'pass2')
-select *from NGUOIDUNG
-
-
----------Trigger để cập nhật số lượng sản phẩm trong bảng CUAHANG sau khi thêm mới dữ liệu vào bảng GIOHANG--------
+--------- 1 Trigger để cập nhật số lượng sản phẩm trong bảng CUAHANG sau khi thêm mới dữ liệu vào bảng GIOHANG--------
 CREATE TRIGGER UpdateSoLuongCon
 ON GIOHANG
 AFTER INSERT
@@ -676,70 +611,4 @@ WHERE TenSP = 'MACBOOK'
 
 select *from GIOHANG
 
-----------Trigger để kiểm tra ngày đặt hàng trong bảng DONHANG và chặn việc đặt hàng vào ngày nghỉ-----------
-CREATE TRIGGER CheckNgayDatHang
-ON DONHANG
-INSTEAD OF INSERT
-AS
-BEGIN
-    IF EXISTS (
-        SELECT 1
-        FROM inserted
-        WHERE DATEPART(dw, NgayDatHang) IN (1, 7) -- 1: Chủ nhật, 7: Thứ 7
-    )
-    BEGIN
-        RAISERROR ('Khong the dat hang vao ngay nghi!', 16, 1)
-        ROLLBACK TRANSACTION
-    END
-    ELSE
-    BEGIN
-        INSERT INTO DONHANG (IDDonHang, NgayDatHang, TenSP, TenND, MaDV)
-        SELECT IDDonHang, NgayDatHang, TenSP, TenND, MaDV
-        FROM inserted
-    END
-END
-
-UPDATE DONHANG
-SET NgayDatHang = '2023-05-16'
-WHERE IDDonHang = 'DH4'
-select *from DONHANG
-
---------Trigger: Tự động tạo mã số đơn hàng khi có thêm dữ liệu vào bảng DONHANG----------
-CREATE TRIGGER AutoGenerateIDDonHang
-ON DONHANG
-AFTER INSERT
-AS
-BEGIN
-    -- Tạo mã số đơn hàng tự động
-    DECLARE @NewIDDonHang VARCHAR(30)
-    SELECT @NewIDDonHang = 'DH' + CAST(IDENT_CURRENT('DONHANG') AS VARCHAR(10))
-    FROM DONHANG
-    WHERE IDDonHang = (SELECT IDDonHang FROM inserted)
-
-    -- Cập nhật mã số đơn hàng vào bảng DONHANG
-    UPDATE DONHANG
-    SET IDDonHang = @NewIDDonHang
-    WHERE IDDonHang = (SELECT IDDonHang FROM inserted)
-END
-
--- Gọi trigger sau khi thêm dữ liệu vào bảng DONHANG
-INSERT INTO DONHANG (NgayDatHang, TenSP, TenND, MaDV)
-VALUES (GETDATE(), 'SP1', 'User2', 'DV1')
-
-
----------Trigger: Giảm số lượng sản phẩm khi có đơn hàng mới trong bảng GIOHANG---------
-CREATE TRIGGER GIAMSL
-ON GIOHANG
-AFTER INSERT
-AS
-BEGIN
-    -- Giảm số lượng sản phẩm trong bảng GIOHANG khi có đơn hàng mới
-    UPDATE GIOHANG
-    SET SoLuong = SoLuong - (SELECT SoLuong FROM inserted)
-    WHERE TenSP = (SELECT TenSP FROM inserted)
-END
--- Gọi trigger sau khi thêm dữ liệu vào bảng GIOHANG
-INSERT INTO GIOHANG (TenSP, SoLuong, Gia, PhuongThucThanhToan, IDCuaHang)
-VALUES ('MACBOOK', 2, 52000000, 'ATM', 'CH1')
-
-select *from GIOHANG
+-------
