@@ -648,7 +648,7 @@ BEGIN
 END
 
 INSERT INTO NGUOIDUNG (IDNguoiDung, TaiKhoan, MatKhau)
-VALUES ('KH1', 'KHOASHOPPE', 'khoa')
+VALUES ('1', 'KHOASHOPPE', 'khoa')
 --------------------Trigger để kiểm tra việc xóa người dùng trong bảng "NGUOIDUNG" để đảm bảo không có xóa người dùng đang có đơn hàng----------------
 CREATE TRIGGER Check_XoaNguoiDung
 ON NGUOIDUNG
